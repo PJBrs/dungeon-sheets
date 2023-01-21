@@ -400,6 +400,7 @@ def make_character_content(
     use_tex_template: bool = False,
     spell_order: bool = False,
     feat_order: bool = False,
+    first_page: int = 1,
 ) -> List[str]:
     """Prepare the inner content for a character sheet.
 
@@ -435,6 +436,7 @@ def make_character_content(
         jinja_env.get_template(f"preamble.{content_format}").render(
             use_dnd_decorations=fancy_decorations,
             use_tex_template=use_tex_template,
+            first_page=first_page,
             title="Features, Magical Items and Spells",
         )
     ]
@@ -627,6 +629,7 @@ def make_character_sheet(
         use_tex_template=use_tex_template,
         spell_order=spell_order,
         feat_order=feat_order,
+        first_page=len(sheets) + 1,
     )
     if output_format == "pdf":
         # Create and combine additional LaTeX pages with detailed character info
