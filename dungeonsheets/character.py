@@ -467,6 +467,37 @@ class Character(Creature):
         return sorted(tuple(fts), key=(lambda x: x.name))
 
     @property
+    def features_by_type(self):
+        fts: dict[str, list[type[Feature]]] = {
+            "Feats": [],
+            "Class Features": [],
+            "Racial Features": [],
+            "Background Features": [],
+        }
+        for c in self.class_list:
+            for item in list(c.features):
+                fts["Class Features"].append(item)
+        # Add player choices, but only if they're not automically given already:
+        for item in self.custom_features:
+            if not item in fts:
+                if item.source == "Feats":
+                    fts["Feats"].append(item)
+                else:
+                    fts["Class Features"].append(item)
+        if self.race is not None:
+            for item in getattr(self.race, "features", ()):
+                fts["Racial Features"].append(item)
+            # some races have level-based features (Ex: Aasimar)
+            if hasattr(self.race, "features_by_level"):
+                for lvl in range(1, self.level + 1):
+                    for item in list(self.race.features_by_level[lvl]):
+                        fts["Racial Features"].append(item)
+        if self.background is not None:
+            for item in getattr(self.background, "features", ()):
+                fts["Background Features"].append(item)
+        return [val for key in fts for val in fts[key]]
+
+    @property
     def custom_features_text(self):
         return tuple([f.name for f in self.custom_features])
 
