@@ -496,16 +496,27 @@ class Character(Creature):
             "Racial Features": [],
             "Background Features": [],
         }
+        other_feat_choices = list()
+        # Add player choices; distinguish between general feats and
+        # feat choices such as fighting styles and metamagic options.
+        for item in self.custom_features:
+            if item.source == "Feats":
+                fts["Feats"].append(item)
+            else:
+                other_feat_choices.append(item)
         for c in self.class_list:
             for item in list(c.features):
-                fts["Class Features"].append(item)
-        # Add player choices, but only if they're not automically given already:
-        for item in self.custom_features:
-            if not item in fts:
-                if item.source == "Feats":
-                    fts["Feats"].append(item)
-                else:
+                if item not in other_feat_choices:
                     fts["Class Features"].append(item)
+                # Now check whether any items in class_feat_choices
+                # is a subclass of current item.
+                for choice in other_feat_choices:
+                    if choice.__class__.__bases__[0] is item.__class__:
+                        fts["Class Features"].append(choice)
+        # Make sure we didn't miss any feat choices:
+        for choice in other_feat_choices:
+            if choice not in fts["Class Features"]:
+                fts["Class Features"].insert(0, choice)
         if self.race is not None:
             for item in getattr(self.race, "features", ()):
                 fts["Racial Features"].append(item)
