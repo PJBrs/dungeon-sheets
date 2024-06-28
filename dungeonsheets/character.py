@@ -879,10 +879,15 @@ class Character(Creature):
         elif 'shields' in prof_set:
             prof_dict["Armor"] += ["Shields"]
         prof_dict["Armor"] = ", ".join(prof_dict["Armor"])
-        if hasattr(self, 'chosen_tools'):
-            prof_dict["Other"] = re.sub(r"[A-Za-z]+('[A-Za-z]+)?",
-                                       lambda word: word.group(0).capitalize(),
-                                       self.chosen_tools)
+        prof_dict["Other"] = ", ".join(
+                prof for prof in prof_set if not (
+                any (re.match(w.name.lower(), prof) for w in w_pro)
+                or any (ar in prof for ar in armor_types)
+                or "shields" in prof)
+                )
+        prof_dict["Other"] = re.sub(r"[A-Za-z]+('[A-Za-z]+)?",
+                                   lambda word: word.group(0).capitalize(),
+                                   prof_dict["Other"])
         return prof_dict
 
     @property
