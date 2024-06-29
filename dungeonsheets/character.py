@@ -873,6 +873,19 @@ class Character(Creature):
     @property
     def proficiencies_by_type(self):
         prof_dict = {}
+        # First collect all proficiencies
+        prof_set = set(self._proficiencies_text)
+        if self.has_class:
+            prof_set.update(self.primary_class._proficiencies_text)
+        if self.num_classes > 1:
+            for c in self.class_list[1:]:
+                prof_set.update(c._multiclass_proficiencies_text)
+        if self.race is not None:
+            prof_set.update(self.race.proficiencies_text)
+        if self.background is not None:
+            prof_set.update(self.background.proficiencies_text)
+        prof_set = set(prof.lower() for prof in prof_set)
+        # Weapon proficiencies
         w_pro = set(self.weapon_proficiencies)
         w_pro.remove(weapons.Unarmed)
         if weapons.MartialWeapon in w_pro:
@@ -887,12 +900,7 @@ class Character(Creature):
         if "Weapons" in prof_dict.keys():
             prof_dict["Weapons"] = ", ".join(prof_dict["Weapons"])
         armor_types = ["all armor", "light armor", "medium armor", "heavy armor"]
-        prof_set = set(
-            [
-                prof.lower().strip().strip(".")
-                for prof in self.proficiencies_text.split(",")
-            ]
-        )
+        # Armor proficiencies and shields
         prof_dict["Armor"] = [ar.title() for ar in armor_types if ar in prof_set]
         if len(prof_dict["Armor"]) > 2 or 'all armor' in prof_set:
             prof_dict["Armor"] = ["All Armor"]
@@ -902,15 +910,18 @@ class Character(Creature):
         elif 'shields' in prof_set:
             prof_dict["Armor"] += ["Shields"]
         prof_dict["Armor"] = ", ".join(prof_dict["Armor"])
+        # "Other" proficiencies (artisan's tools, musical instruments, ...)
         prof_dict["Other"] = ", ".join(
                 prof for prof in prof_set if not (
-                any ( re.match(w.name.lower(), prof) for w in w_pro)
+                any (re.match(w.name.lower(), prof) for w in w_pro)
                 or any (ar in prof for ar in armor_types)
                 or "shields" in prof)
                 )
+        # Backward compatibility with chosen_tools
         if hasattr(self, 'chosen_tools'):
             prof_dict["Other"] = ", ".join(filter(
                     None, [prof_dict["Other"], self.chosen_tools]))
+        # Nice capitalization
         prof_dict["Other"] = re.sub(r"[A-Za-z]+('[A-Za-z]+)?",
                                    lambda word: word.group(0).capitalize(),
                                    prof_dict["Other"])
