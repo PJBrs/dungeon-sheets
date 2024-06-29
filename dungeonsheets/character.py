@@ -851,17 +851,24 @@ class Character(Creature):
         # Backward compatibility with chosen_tools
         if not self.chosen_tools == "" :
             prof_set.update(self.chosen_tools.split(","))
-        # Extract "Other" proficiencies (artisan's tools, musical instruments, ... )
+        # Extract "Other" proficiencies (artisan's tools, musical instruments,
+        # ... ) and "Optional" proficiencies
         prof_dict["Other"] = []
+        prof_dict["Optional"] = []
         for prof in prof_set:
             if not (
                 # Anything other than weapons, armor, shields or options
                 any (re.search(w.name.lower(), prof) for w in w_pro)
                 or any (ar in prof for ar in armor_types)
                 or "shields" in prof
+                or r"[" in prof
             ):
                 prof_dict["Other"].append(prof)
+            elif r"[" in prof:
+                # Collect optional proficiencies
+                prof_dict["Optional"].append(prof)
         prof_dict["Other"] = ", ".join(prof_dict["Other"])
+        prof_dict["Optional"] = ", ".join(prof_dict["Optional"])
         # Nice capitalization
         prof_dict["Other"] = re.sub(r"[A-Za-z]+('[A-Za-z]+)?",
                                    lambda word: word.group(0).capitalize(),
