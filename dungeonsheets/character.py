@@ -838,7 +838,7 @@ class Character(Creature):
     def proficiencies_by_type(self):
         prof_dict = {}
         # First collect all proficiencies
-        prof_set = set(self.proficiencies_text)
+        prof_set = set()
         if self.has_class:
             prof_set.update(self.primary_class._proficiencies_text)
         if self.num_classes > 1:
@@ -874,13 +874,26 @@ class Character(Creature):
         elif 'shields' in prof_set:
             prof_dict["Armor"] += ["Shields"]
         prof_dict["Armor"] = ", ".join(prof_dict["Armor"])
-        # "Other" proficiencies (artisan's tools, musical instruments, ...)
-        prof_dict["Other"] = ", ".join(
-                prof for prof in prof_set if not (
-                any (re.match(w.name.lower(), prof) for w in w_pro)
+        # Extract "Other" proficiencies (artisan's tools, musical instruments,
+        # ... ) and "Optional" proficiencies into separate lists
+        other_profs = []
+        optional_profs = []
+        for prof in prof_set:
+            if not (
+                # Anything other than weapons, armor, shields or options
+                any (re.search(w.name.lower(), prof) for w in w_pro)
                 or any (ar in prof for ar in armor_types)
-                or "shields" in prof)
-                )
+                or "shields" in prof
+                or r"[" in prof
+            ):
+                other_profs.append(prof)
+            elif r"[" in prof:
+                # Collect optional proficiencies
+                optional_profs.append(prof)
+        if not self.proficiencies_text == ():
+            other_profs += self.proficiencies_text
+        prof_dict["Other"] = ", ".join(prof for prof in other_profs)
+        prof_dict["Optional"] = ", ".join(prof for prof in optional_profs)
         # Backward compatibility with chosen_tools
         if hasattr(self, 'chosen_tools'):
             prof_dict["Other"] = ", ".join(filter(
