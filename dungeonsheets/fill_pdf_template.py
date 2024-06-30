@@ -143,7 +143,11 @@ def create_character_pdf_template(character, basename, flatten=False):
         try:
             fields[skill_boxes[skill.replace(" ", "_").lower()]] = CHECKBOX_ON
         except KeyError:
-            raise KeyError(f"Unknown skill: '{skill}'")
+            if r"[" in skill:
+                msg = f"You still have skills to select: '{skill}'"
+                warnings.warn(msg)
+            else:
+                raise KeyError(f"Unknown skill: '{skill}'")
     # Add weapons
     weapon_fields = [
         ("Wpn Name", "Wpn1 AtkBonus", "Wpn1 Damage"),
