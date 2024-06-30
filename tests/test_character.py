@@ -243,7 +243,8 @@ class TestCharacter(TestCase):
         self.assertEqual(char.armor_class, 15)
         
     def test_carrying_weight(self):
-        char = Character(race="lightfoot halfling", strength=12)
+        char = Character(race="lightfoot halfling",
+                         strength=12,)
         # Check carrying capacity
         self.assertEqual(char.carrying_capacity, 180)
         # Check the armor weight is included
@@ -360,9 +361,9 @@ class DruidTestCase(TestCase):
         not_beast = monsters.Monster()
         not_beast.description = "monster"
         self.assertFalse(low_druid.can_assume_shape(not_beast))
-        
+
 class BeastMasterTestCase(TestCase):
-    
+
     def test_ranger_beast(self):
         char = Ranger(6, subclasses = ["Beast Master"])
         char.ranger_beast = "Panther"
@@ -380,6 +381,3 @@ class BeastMasterTestCase(TestCase):
         char = Ranger(3, subclasses = ["Beast Master"])
         char.ranger_beast = "Panther"
         self.assertEqual(char.ranger_beast.hp_max, 13)
-        
-        
-        

@@ -11,7 +11,7 @@ class TestStats(TestCase):
         self.assertEqual(stats.mod_str(None), "N/A")
 
     def test_str_to_list(self):
-        char = character.Character(equipment="a, b, c")
+        char = character.Character(equipment="a, b, c", classes=["Fighter"], subclasses=["Gunslinger"], levels=[3])
         # Regular string
         self.assertEqual(stats.str_to_list(char, "equipment"), ["a", "b", "c"])
         # Alternate separator
