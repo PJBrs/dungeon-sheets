@@ -171,7 +171,7 @@ def create_character_pdf_template(character, basename, flatten=False):
     # Other proficiencies and languages
     prof_text = ""
     for prof_type, values in character.proficiencies_by_type.items():
-        if not values == "":
+        if not (prof_type == "Optional" or values == ""):
             prof_text += prof_type + ": " + values + ".\n\n"
     prof_text += "Languages: " + text_box(character.languages)
     fields["ProficienciesLang"] = prof_text
