@@ -612,7 +612,10 @@ class Character(Creature):
                     self.magic_items.append(ThisMagicItem(wielder=self))
             elif attr == "weapon_proficiencies":
                 self.other_weapon_proficiencies = ()
-                msg = 'Magic Item "{}" not defined. Please add it to ``weapons.py``'
+                if r"[" in str(val):
+                    msg = 'Don\'t forget to choose optional proficiencies: "{}".'
+                else:
+                    msg = 'Magic Item "{}" not defined. Please add it to ``weapons.py``'
                 wps = set(
                     [
                         self._resolve_mechanic(
