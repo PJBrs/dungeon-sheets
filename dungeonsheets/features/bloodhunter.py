@@ -863,12 +863,12 @@ class OtherworldlyPatron(FeatureSelector):
     """
     
     options = {
-    	"Archfey": ArchfeyPatron,
-    	"Celestial": CelestialPatron,
-    	"Fiend": FiendPatron,
-    	"Great Old One": GreatOldOnePatron,
-    	"Hexblade": HexbladePatron,
-    	"Undying": UndyingPatron,
+        "archfey": ArchfeyPatron,
+        "celestial": CelestialPatron,
+        "fiend": FiendPatron,
+        "great old one": GreatOldOnePatron,
+        "hexblade": HexbladePatron,
+        "undying": UndyingPatron,
     }
     name = "Otherworldly Patron (Select One)"
     source = "Blood Hunter (Order of the Profane Soul)"
