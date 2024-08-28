@@ -1,4 +1,4 @@
-from dungeonsheets.features.features import Feature
+from dungeonsheets.features.features import Feature, FeatureSelector
 
 
 # PHB
@@ -513,17 +513,82 @@ class PolearmMaster(Feature):
     source = "Feats"
 
 
-class Resilient(Feature):
+class ResilientStrength(Feature):
+    """You gain the following benefits:
+
+    - Increase your strength by 1, to a maximum of 20.
+    - You gain proficiency in strength saving throws.
+
+    """
+
+    name = "Resilient (Strength)"
+    source = "Feats"
+    def __init__(self, owner=None):
+        print(self.owner)
+        super().__init__(owner=owner)
+        self.owner.saving_throw_proficiencies += ("strength",)
+        print (self.owner.saving_throw_proficiencies)
+
+
+class ResilientDexterity(Feature):
+    """You gain the following benefits:
+
+    - Increase your dexterity by 1, to a maximum of 20.
+    - You gain proficiency in dexterity saving throws.
+
+    """
+
+    name = "Resilient (Dexterity)"
+    source = "Feats"
+    def __init__(self, owner=None):
+        print(self.owner)
+        super().__init__(owner=owner)
+        self.owner.saving_throw_proficiencies += ("dexterity",)
+        print (self.owner.saving_throw_proficiencies)
+
+
+class ResilientConstitution(Feature):
+    """You gain the following benefits:
+
+    - Increase your constitution by 1, to a maximum of 20.
+    - You gain proficiency in constitution saving throws.
+
+    """
+
+    name = "Resilient (Constitution)"
+    source = "Feats"
+    def __init__(self, owner=None):
+        print(self.owner)
+        super().__init__(owner=owner)
+        self.owner.saving_throw_proficiencies += ("constitution",)
+        print (self.owner.saving_throw_proficiencies)
+
+
+class Resilient(FeatureSelector):
     """Choose one ability score. You gain the following benefits:
 
     - Increase the chosen ability score by 1, to a maximum of 20.
     - You gain proficiency in saving throws using the chosen ability.
 
+    Select one of the following resilient options under feature_choices in
+    your .py file:
+
+    resilientstrength
+
+    resilientdexterity
+
+    resilientconstitution
+
     """
 
+    options = {
+        "resilientstrength": ResilientStrength,
+        "resilientdexterity": ResilientDexterity,
+        "resilientconstitution": ResilientConstitution,
+    }
     name = "Resilient"
     source = "Feats"
-    needs_implementation = True
+    needs_implementation = False
 
 
 class RitualCaster(Feature):

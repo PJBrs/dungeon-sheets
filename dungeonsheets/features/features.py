@@ -87,8 +87,10 @@ class FeatureSelector(Feature):
         new_feat.__doc__ = t.__doc__
         new_feat.name = t.name
         new_feat.source = t.source
+        feature_choices=owner.feature_choices
         new_feat.needs_implementation = True
         for selection in feature_choices:
+            print (selection)
             for k in t.options.keys():
                 if selection.lower() == k.lower():
                     feat_class = t.options[k]
