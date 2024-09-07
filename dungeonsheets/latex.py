@@ -318,7 +318,7 @@ def latex_character_spell_info(char):
         texT.append("\\" + k + "SlotsTotal{" + str(v) + "}")
     tex2 = "\n".join(texT) + "\n"
     texT = []
-    level_names = level_names = ["Cantrip", 
+    level_names = level_names = ["Cantrip",
                        'FirstLevelSpell',
                        'SecondLevelSpell',
                        'ThirdLevelSpell',
@@ -333,8 +333,8 @@ def latex_character_spell_info(char):
                     [8, 13, 13, 13, 13, 9, 9, 9, 7, 7]))
     halfcaster_sheet_spaces = dict(zip(level_names,
                     [11, 26, 19, 19, 19, 0, 0, 0, 0, 0]))
-    comp_letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", 
-                  "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", 
+    comp_letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
+                  "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
                   "W", "X", "Y", "Z"]
 
     # spellList is a dict.
@@ -342,53 +342,49 @@ def latex_character_spell_info(char):
     # Each tuple consists of two elements: a spell name and a boolean for prepared.
     # So: spellList = {levelname : [(spellname, preparedbool), ]}
     spellList = char.spell_casting_info["list"]
-    # Default, assume fullcaster character and associated spellsheet.
-    fullcaster = True
-    # Determine which sheet to use (fullcaster or halfcaster).
-    # Only use halfcaster when we have no spells > 5th level and
-    # would overflow the fullcaster sheet.
-    # Keep the same sheet for overflow pages, if any.
     only_low_level = all((char.spell_slots(level) == 0 for level in range(6, 10)))
-    if (any(len(spellList[key]) > fullcaster_sheet_spaces[key] for key in spellList.keys())
-            and only_low_level):
-        fullcaster = False
 
-    def AddSpellPage(fullcaster = True):
+    def AddSpellPage(only_low_level = False,
+                     spellsheet_command = "\\renderspellsheet",
+                     sheet_spaces = fullcaster_sheet_spaces):
         texT = []
         for k, v in spellList.items():
-            spells_this_level_and_page = len(v)
-            if fullcaster:
-                spellsheet_command = "\\renderspellsheet"
-                slots_max = fullcaster_sheet_spaces[k]
-            else:
-                spellsheet_command = "\\renderhalfspellsheet"
-                slots_max = halfcaster_sheet_spaces[k]
+            spells_this_level = len(v)
+            # Determine which sheet to use (fullcaster or halfcaster). Only
+            # use halfcaster when we have no spells > 5th level and would
+            # overflow the fullcaster sheet. Use same sheet for all pages.
+            if spells_this_level > sheet_spaces[k] and only_low_level:
+                    sheet_spaces = halfcaster_sheet_spaces
+                    spellsheet_command = "\\renderhalfspellsheet"
+            slots_max = sheet_spaces[k]
             for spinfo, slot in zip(v[:slots_max], comp_letters):
                 spellList[k].remove(spinfo)
-                slot_command = "\\"+k+'Slot'+slot
-                slot_command_name = slot_command+"{"+spinfo[0]+"}"
+                slot_command = "\\" + k + 'Slot' + slot
+                slot_command_name = slot_command + "{" + spinfo[0] + "}"
                 if k == "Cantrip":
                     texT = texT + [slot_command_name]
                     continue
-                slot_command_prep = slot_command+"Prepared"+"{"+str(spinfo[1])+"}"
+                slot_command_prep = slot_command + "Prepared" + "{" + str(spinfo[1]) + "}"
                 texT = texT + [slot_command_name, slot_command_prep]
             # Set remaining slots empty
-            for empty_slot in comp_letters[spells_this_level_and_page:slots_max]:
-                slot_command = "\\"+k+'Slot'+empty_slot
-                slot_command_name = slot_command+"{}"
+            for empty_slot in comp_letters[spells_this_level:slots_max]:
+                slot_command = "\\" + k + 'Slot' + empty_slot
+                slot_command_name = slot_command + "{}"
                 if k == "Cantrip":
                     texT = texT + [slot_command_name]
                     continue
                 slot_command_prep = slot_command+"Prepared{False}"
                 texT = texT + [slot_command_name, slot_command_prep]
-            if (not len(spellList[k]) == 0
-                    and not spellList[k][0][0] == "--- Overflow ---"):
+            if (any(spellList[k]) and not spellList[k][0][0] == "--- Overflow ---"):
                 spellList[k].insert(0, ("--- Overflow ---", False))
-        return "\n".join(texT) + '\n\n' + spellsheet_command + '\n\n'
+        texT = texT + ["\n" + spellsheet_command + "\n"]
+        if any(spellList.values()):
+            texT = texT + [AddSpellPage(only_low_level,
+                                        spellsheet_command,
+                                        sheet_spaces)]
+        return "\n".join(texT)
 
-    tex3 = ""
-    while any(spellList.values()):
-        tex3 = tex3 + AddSpellPage(fullcaster)
+    tex3 = AddSpellPage(only_low_level = only_low_level)
     return "\n".join([tex1, tex2, tex3])
 
 
