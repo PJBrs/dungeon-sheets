@@ -164,6 +164,8 @@ def latex_parts(
         "input_encoding": input_encoding,
         "doctitle_xform": doctitle,
         "initial_header_level": initial_header_level,
+        "use_latex_citations": True,
+        "legacy_column_widths": True,
     }
     writer = LatexWriter()
     parts = core.publish_parts(
