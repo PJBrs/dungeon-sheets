@@ -190,7 +190,7 @@ class Ceremony(Spell):
     casting_time = "1 hour"
     casting_range = "Touch"
     components = ("V", "S", "M")
-    materials = "25 gp worth of powdered silver,which the spell consumes"
+    materials = "25 gp worth of powdered silver, which the spell consumes"
     duration = "Instantaneous"
     ritual = True
     magic_school = "Abjuration"
