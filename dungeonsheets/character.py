@@ -556,7 +556,7 @@ class Character(Creature):
             spells |= set(f.spells_prepared)
         for c in self.spellcasting_classes:
             spells |= set(c.spells_prepared)
-        return sorted(tuple(spells), key=(lambda x: x.name))
+        return spells
 
     def set_attrs(self, **attrs):
         """
@@ -632,8 +632,6 @@ class Character(Creature):
                         warning_message=msg,
                     )
                     _spells.append(ThisSpell)
-                # Sort by name
-                _spells.sort(key=lambda spell: spell.name)
                 # Save list of spells to character atribute
                 if attr == "spells":
                     # Instantiate them all for the spells list
