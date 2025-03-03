@@ -165,7 +165,7 @@ def latex_parts(
         "doctitle_xform": doctitle,
         "initial_header_level": initial_header_level,
         "use_latex_citations": True,
-        "legacy_column_widths": True,
+        "legacy_column_widths": False,
     }
     writer = LatexWriter()
     parts = core.publish_parts(
@@ -234,11 +234,9 @@ def rst_to_latex(rst, top_heading_level: int=0, format_dice: bool = True, use_dn
             transformed_header = header
             for width in colwidths:
                 # Transform the column width by dividing it by the initial table width
-                transformed_width = round( float(width) / tablewidth, 3)
-                # Subtract the table column separation spaces from the transformed column width
-                transformed_width = r"\\dimexpr " + str(transformed_width) + r"\\DUtablewidth -2\\tabcolsep"
+                transformed_width = str(round( float(width) / tablewidth, 3))
                 # Replace the original width with the transformed width
-                transformed_header = re.sub(width + r"\\DUtablewidth",
+                transformed_header = re.sub(width,
                                             transformed_width,
                                             transformed_header)
             # Replace the original table header with the transformed one
