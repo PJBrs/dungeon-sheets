@@ -548,7 +548,6 @@ def latex_character_sheet(character, basename, debug=False):
         tex,
         basename=basename,
         keep_temp_files=debug,
-        use_dnd_decorations=True,
         comm1="lualatex",
         use_tex_template=True,
     )
