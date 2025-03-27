@@ -93,6 +93,7 @@
 [% endif %]
   \definecolor{mygrey}{gray}{0.7}
 
+\ifluatex \else
 %% Unicode definitions for superscripts/subscripts
 \DeclareUnicodeCharacter{00B9}{\textsuperscript{1}}
 \DeclareUnicodeCharacter{00B2}{\textsuperscript{2}}
@@ -104,6 +105,7 @@
 \DeclareUnicodeCharacter{2078}{\textsuperscript{8}}
 \DeclareUnicodeCharacter{2079}{\textsuperscript{9}}
 \DeclareUnicodeCharacter{2070}{\textsuperscript{0}}
+\fi
 
 %%% Fallback definitions for Docutils-specific commands
 [% raw %]
