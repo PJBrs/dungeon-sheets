@@ -397,6 +397,7 @@ def make_character_content(
     character: Character,
     content_format: str,
     fancy_decorations: bool = False,
+    use_tex_template: bool = False,
     spell_order: bool = False,
     feat_order: bool = False,
 ) -> List[str]:
@@ -433,9 +434,36 @@ def make_character_content(
     content = [
         jinja_env.get_template(f"preamble.{content_format}").render(
             use_dnd_decorations=fancy_decorations,
+            use_tex_template=use_tex_template,
             title="Features, Magical Items and Spells",
         )
     ]
+    if use_tex_template:
+        # Load portrait image file if present
+        portrait_command = ""
+        if character.portrait:
+            for image in character.images:
+                if re.search(r"" + character.portrait, str(image[0])):
+                    character.images.remove(image)
+                    break
+            portrait_command = r"{\centering \includegraphics[width=5.75cm,height=7.85cm,keepaspectratio]{" + character.portrait + "} \\\\ \\noindent}"
+
+        # Move symbol image a bit left, if applicable
+        if character.symbol:
+            for image in character.images:
+                if re.search(r"" + character.symbol, str(image[0])):
+                    character.images.remove(image)
+                    character.images = [(character.symbol, 1, 488, 564, 145, 112)] + character.images
+                    break
+
+        content.append(
+            jinja_env.get_template("latex_character_sheet_template.tex").render(
+                use_dnd_decorations=fancy_decorations,
+                char=character,
+                portrait=portrait_command,
+                title="Features, Magical Items and Spells",
+            )
+        )
     # Make the character sheet, and background pages if producing HTML
     if content_format != "tex":
         content.append(
@@ -518,39 +546,6 @@ def make_character_content(
     return content
 
 
-def latex_character_sheet(character, basename, debug=False):
-    """Another adaption. All changes can be easily included as options
-    in the orignal functions, though."""
-
-    # Load portrait image file if present
-    portrait_command = ""
-    if character.portrait:
-        for image in character.images:
-            if re.search(r"" + character.portrait, str(image[0])):
-                character.images.remove(image)
-                break
-        portrait_command = r"{\centering \includegraphics[width=5.75cm,height=7.85cm,keepaspectratio]{" + character.portrait + "} \\\\ \\noindent}"
-
-    # Move symbol image a bit left, if applicable
-    if character.symbol:
-        for image in character.images:
-            if re.search(r"" + character.symbol, str(image[0])):
-                character.images.remove(image)
-                character.images = [(character.symbol, 1, 488, 564, 145, 112)] + character.images
-                break
-
-    tex = jinja_env.get_template("latex_character_sheet_template.tex").render(
-        char=character, portrait=portrait_command
-    )
-    latex.create_latex_pdf(
-        tex,
-        basename=basename,
-        keep_temp_files=debug,
-        use_dnd_decorations=True,
-        use_tex_template=True,
-    )
-
-
 def make_character_sheet(
     char_file: Union[str, Path],
     character: Optional[Character] = None,
@@ -604,14 +599,7 @@ def make_character_sheet(
     )
     # Typeset combined LaTeX file
     if output_format == "pdf":
-        if use_tex_template:
-            latex_character_sheet(
-                character=character,
-                basename=char_base,
-                debug=debug,
-            )
-        # Fillable PDF forms
-        else:
+        if not use_tex_template:
             sheets.append(person_base + ".pdf")
             char_pdf = create_character_pdf_template(
                 character=character, basename=char_base, flatten=flatten
@@ -621,16 +609,31 @@ def make_character_sheet(
                 basename=person_base,
                 flatten=flatten,
             )
-        if character.is_spellcaster and not (use_tex_template):
-            # Create spell sheet
-            spell_base = "{:s}_spells".format(basename)
-            created_basenames = create_spells_pdf_template(
-                character=character, basename=spell_base, flatten=flatten
-            )
-            for spell_base in created_basenames:
-                sheets.append(spell_base + ".pdf")
-        # Combined with additional LaTeX pages with detailed character info
-        features_base = "{:s}_features".format(basename)
+            if character.is_spellcaster:
+                # Create spell sheet
+                spell_base = "{:s}_spells".format(basename)
+                created_basenames = create_spells_pdf_template(
+                    character=character, basename=spell_base, flatten=flatten
+                )
+                for spell_base in created_basenames:
+                    sheets.append(spell_base + ".pdf")
+    # Prepare the tex/html content
+    content_suffix = format_suffixes[output_format]
+    # Create a list of features and magic items
+    content = make_character_content(
+        character=character,
+        content_format=content_suffix,
+        fancy_decorations=fancy_decorations,
+        use_tex_template=use_tex_template,
+        spell_order=spell_order,
+        feat_order=feat_order,
+    )
+    if output_format == "pdf":
+        # Create and combine additional LaTeX pages with detailed character info
+        if use_tex_template:
+            features_base = basename
+        else:
+            features_base = "{:s}_features".format(basename)
         try:
             if len(content) > 2:
                 latex.create_latex_pdf(
@@ -638,10 +641,12 @@ def make_character_sheet(
                     basename=features_base,
                     keep_temp_files=debug,
                     use_dnd_decorations=fancy_decorations,
+                    use_tex_template=use_tex_template,
                 )
-                sheets.append(features_base + ".pdf")
                 final_pdf = f"{basename}.pdf"
-                merge_pdfs(sheets, final_pdf, clean_up=not (debug))
+                if not use_tex_template:
+                    sheets.append(features_base + ".pdf")
+                    merge_pdfs(sheets, final_pdf, clean_up=not (debug))
                 for image in character.images:
                     insert_image_into_pdf(final_pdf, *image)
         except exceptions.LatexNotFoundError:
