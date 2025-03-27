@@ -1,4 +1,4 @@
-\documentclass[10pt,twocolumn,lettersize]{book}
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
 
 % For parsed docstrings
 \usepackage[T1]{fontenc}
@@ -30,8 +30,11 @@
 \AfterEndEnvironment{itemize}{\NoIndentAfterThis}
 
 \newlength{\zerosep}
+[% if use_tex_template %]
+\usepackage{dndtemplate}
+[% endif %]
 [% if use_dnd_decorations %]
-  \usepackage[layout=true]{dnd}
+  \usepackage[justified,layout=true]{dnd}
   \setlength{\zerosep}{0em}
 
   [% raw %]
@@ -87,8 +90,9 @@
   [% endraw %]
 
 [% else %]
-  \usepackage[margin=1.5cm]{geometry}
-  \usepackage[dvipsnames]{color}
+  \usepackage{color}
+  \usepackage{geometry}
+  \geometry{margin=1.5cm}
   \setlength{\zerosep}{-1em}
 [% endif %]
   \definecolor{mygrey}{gray}{0.7}
@@ -148,7 +152,9 @@
   \fi
 }
 [% endraw %]
+[% if not use_tex_template %]
 
 \begin{document}
 
 \chapter*{[[ title ]]}
+[% endif %]
