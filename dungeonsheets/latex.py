@@ -52,7 +52,6 @@ def create_latex_pdf(
     keep_temp_files: bool = False,
     use_dnd_decorations: bool = False,
     use_tex_template: bool = False,
-    comm1: str = "pdflatex",
 ):
     # Create tex document
     tex_file = f"{basename}.tex"
@@ -63,7 +62,7 @@ def create_latex_pdf(
     pdf_file = Path(f"{basename}.pdf")
     output_dir = pdf_file.resolve().parent
     tex_command_line = [
-        comm1,
+        "lualatex",
         "--output-directory",
         str(output_dir),
         "-halt-on-error",
