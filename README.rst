@@ -60,7 +60,7 @@ Optional External dependencies
 ==============================
 
 * You may use **pdftk** to generate the sheets in PDF format.
-* You will need **pdflatex**, and a few latex packages, installed to
+* You will need **lualatex**, and a few latex packages, installed to
   generate the PDF spell pages (optional).
 
 If **pdftk** is available, it will be used for pdf generation. If not,
@@ -72,7 +72,7 @@ pdftk is available in Debian and derivatives as **pdftk**, the package
 is not available in some RPM distributions, such as Fedora and CentOS.
 One alternative would be to build your PC sheets using docker.
 
-If the ``pdflatex`` command is available on your system, dungeon-sheets
+If the ``lualatex`` command is available on your system, dungeon-sheets
 will include a description of a character's features. For spellcasters,
 it will include a spellbook with descriptions of each spell known. If
 not, then this feature will be skipped.
