@@ -1,21 +1,33 @@
 \documentclass[letterpaper,openany,oneside,twocolumn]{book}
 
-% For parsed docstrings
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 \usepackage{alltt}
+\usepackage{array}             % For DocUtils compatibility
 \usepackage[bookmarks=true,bookmarksopen=true]{hyperref}
 \usepackage{bookmark}
+\usepackage{enumitem}          % For \setlist{noitemsep}
+\usepackage{etoolbox}          % For \newrobustcmd
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{needspace}
 \usepackage{supertabular}
+[%- if use_tex_template %]
+\usepackage{dndtemplate}
+[%- if not use_dnd_decorations %]
+\usepackage{titletoc}          % For dndtemplate
+[%- endif -%]
+[%- endif -%]
+[%- if use_dnd_decorations %]
+\usepackage[justified,layout=true]{dnd}
+\usepackage{needspace}         % For dndlongtable environment
+[%- else %]
+\usepackage{color}             % For \definecolor
+\usepackage{geometry}          % For margins and dndtemplate
+[%- endif %]
 
 % Make lists more compact
-\usepackage{enumitem}
 \setlist{noitemsep}
 
 % No indentation after lists
-\usepackage{etoolbox}
 \makeatletter
 \newcommand*\@NoIndentAfter{%
     \@ifnextchar\par{%
@@ -30,98 +42,73 @@
 \AfterEndEnvironment{enumerate}{\NoIndentAfterThis}
 \AfterEndEnvironment{itemize}{\NoIndentAfterThis}
 
-\newlength{\zerosep}
-[% if use_tex_template %]
-\usepackage{dndtemplate}
-[% if not use_dnd_decorations %]
-\usepackage {titletoc}
-[% endif %]
-[% endif %]
-[% if use_dnd_decorations %]
-  \usepackage[justified,layout=true]{dnd}
-  \setlength{\zerosep}{0em}
+[%- if use_dnd_decorations %]
+[% raw %]
+% dndlongtable environment
+\ExplSyntaxOn
+% Table options
+\keys_define:nn { dnd / longtable }
+  {
+    color .tl_set:N            = \l__dnd_table_color_tl,
+    color .initial:n           = tablecolor,
+    color .value_required:n    = true,
+    header .tl_set:N           = \l__dnd_table_header_tl,
+    header .value_required:n   = true,
+    width .dim_set:N           = \l__dnd_table_width_dim,
+    width .value_required:n    = true,
+    firsthead .tl_set:N        = \l__table_firsthead_tl,
+    firsthead .value_required:n   = true,
+  }
 
-  [% raw %]
-  % dndlongtable environment
-  \ExplSyntaxOn
+\NewDocumentEnvironment {DndLongTable} { o m }
+{
+  \group_begin:
+  \tablefirsthead{\l__table_firsthead_tl}
 
-  % Table options
-  \keys_define:nn { dnd / longtable }
+  \dim_set:Nn \l__dnd_table_width_dim { \linewidth }
+  \tl_if_novalue:nF {#1}
+    { \keys_set:nn { dnd / longtable } {#1} }
+
+  \par \vspace { 9pt plus 3pt minus 3pt}
+
+  \tl_if_empty:NF \l__dnd_table_header_tl
     {
-      color .tl_set:N            = \l__dnd_table_color_tl,
-      color .initial:n           = tablecolor,
-      color .value_required:n    = true,
-      header .tl_set:N           = \l__dnd_table_header_tl,
-      header .value_required:n   = true,
-      width .dim_set:N           = \l__dnd_table_width_dim,
-      width .value_required:n    = true,
-      firsthead .tl_set:N        = \l__table_firsthead_tl,
-      firsthead .value_required:n   = true,
+      \group_begin:
+        \needspace{5\baselineskip}
+        \noindent \DndFontTableTitle{ \l__dnd_table_header_tl}
+        \par \vspace{ 5pt plus 2pt minus 2pt }
+      \group_end:
     }
 
-  \NewDocumentEnvironment {DndLongTable} { o m }
-  {
-    \group_begin:
+  \DndFontTableBody
 
-    \tablefirsthead{\l__table_firsthead_tl}
+  \rowcolors {1} {} {\l__dnd_table_color_tl}
 
-    \dim_set:Nn \l__dnd_table_width_dim { \linewidth }
-    \tl_if_novalue:nF {#1}
-      { \keys_set:nn { dnd / longtable } {#1} }
+  \begin{supertabular*} {\l__dnd_table_width_dim} {#2}
+}
+{
+  \end{supertabular*} \vspace { 9pt plus 3pt minus 3pt }
+  \group_end:
+}
+\ExplSyntaxOff
+[%- endraw %]
+[%- else %]
+\geometry{margin=1.5cm}
+\newlength{\zerosep}
+\setlength{\zerosep}{-1em}
 
-    \par \vspace { 9pt plus 3pt minus 3pt}
-
-    \tl_if_empty:NF \l__dnd_table_header_tl
-      {
-        \group_begin:
-          \needspace{5\baselineskip}
-          \noindent \DndFontTableTitle{ \l__dnd_table_header_tl}
-          \par \vspace{ 5pt plus 2pt minus 2pt }
-        \group_end:
-      }
-
-    \DndFontTableBody
-
-    \rowcolors {1} {} {\l__dnd_table_color_tl}
-
-    \begin{supertabular*} {\l__dnd_table_width_dim} {#2}
-  }
-  {
-    \end{supertabular*} \vspace { 9pt plus 3pt minus 3pt }
-    \group_end:
-  }
-  \ExplSyntaxOff
-  [% endraw %]
-
-[% else %]
-  \usepackage{color}
-  \usepackage{geometry}
-  \geometry{margin=1.5cm}
-  \setlength{\zerosep}{-1em}
-[% endif %]
-  \definecolor{mygrey}{gray}{0.7}
-
-\ifluatex \else
-%% Unicode definitions for superscripts/subscripts
-\DeclareUnicodeCharacter{00B9}{\textsuperscript{1}}
-\DeclareUnicodeCharacter{00B2}{\textsuperscript{2}}
-\DeclareUnicodeCharacter{00B3}{\textsuperscript{3}}
-\DeclareUnicodeCharacter{2074}{\textsuperscript{4}}
-\DeclareUnicodeCharacter{2075}{\textsuperscript{5}}
-\DeclareUnicodeCharacter{2076}{\textsuperscript{6}}
-\DeclareUnicodeCharacter{2077}{\textsuperscript{7}}
-\DeclareUnicodeCharacter{2078}{\textsuperscript{8}}
-\DeclareUnicodeCharacter{2079}{\textsuperscript{9}}
-\DeclareUnicodeCharacter{2070}{\textsuperscript{0}}
-\fi
+% Color for unavailable druid shapes
+\definecolor{mygrey}{gray}{0.7}
+[%- endif %]
 
 %%% Fallback definitions for Docutils-specific commands
-[% raw %]
-\usepackage{longtable,ltcaption,array}
+[%- raw %]
 \setlength{\extrarowheight}{2pt}
+
 % internal use in tables
 \newlength{\DUtablewidth}
 \newcommand{\DUcolumnwidth}[1]{\dimexpr#1\DUtablewidth-2\tabcolsep\relax}
+
 % admonition (specially marked topic)
 \providecommand{\DUadmonition}[2][class-arg]{%
   % try \DUadmonition#1{#2}:
@@ -133,6 +120,7 @@
     \end{center}
   \fi
 }
+
 \newenvironment{DUlineblock}[1]{%
   \list{}{\setlength{\partopsep}{\parskip}
     \addtolength{\partopsep}{\baselineskip}
@@ -155,8 +143,8 @@
     \smallskip\noindent\textbf{#2}\smallskip%
   \fi
 }
-[% endraw %]
 
+[%- endraw %]
 \begin{document}
 [% if not use_tex_template %]
 
