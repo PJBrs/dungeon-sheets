@@ -286,7 +286,7 @@ def rst_to_boxlatex(rst):
         return ""
     tex_parts = latex_parts(rst)
     tex = tex_parts["body"]
-    tex = tex.replace('\n\n', ' \\\\\n')
+    tex = '\n{\\setlength{\\parindent}{0cm}\n' + tex + '}'
     return tex
 
 
