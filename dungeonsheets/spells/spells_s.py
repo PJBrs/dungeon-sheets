@@ -299,8 +299,8 @@ class ShadowBlade(Spell):
     dissipates at the end of the turn. Thereafter, while the spell persists, you can
     use a bonus action to cause the sword to reappear in your hand.
 
-    At Higher
-    Levels: When you cast this spell using a 3rd- or 4th-level spell slot, the
+    **At Higher
+    Levels:** When you cast this spell using a 3rd- or 4th-level spell slot, the
     damage increases to 3d8. When you cast it using a 5th- or 6th-level spell slot,
     the damage increases to 4d8. When you cast it using a spell slot of 7th level or
     higher, the damage increases to 5d8.
@@ -806,10 +806,10 @@ class Snare(Spell):
     """As you cast this spell, you use the rope to create a circle with a
     5-foot radius on the ground or the floor. When you finish casting,
     the rope disappears and the circle becomes a magic trap.
-    
+
     This trap is nearly invisible, requiring a successful Intelligence
     (Investigation) check against your spell save DC to be discerned.
-    
+
     The trap triggers when a Small, Medium, or Large creature moves
     onto the ground or the floor in the spell's radius. That creature
     must succeed on a Dexterity saving throw or be magically hoisted
@@ -874,25 +874,29 @@ class SoulCage(Spell):
     ways described below. You can use a trapped soul up to six times. Once you
     exploit a soul for the sixth time, it is released, and the spell ends. While a
     soul is trapped, the dead humanoid it came from can't be revived.
-    Steal Life.
-    You can use a bonus action to drain vigor from the soul and regain 2d8 hit
-    points.
-    Query Soul. You ask the soul a question (no action required) and receive
+
+    **Steal Life.** You can use a bonus action to drain vigor from the soul and
+    regain 2d8 hit points.
+
+    **Query Soul.** You ask the soul a question (no action required) and receive
     a brief telepathic answer, which you can understand regardless of the language
     used. The soul knows only what it knew in life, but it must answer you
     truthfully and to the best of its ability. The answer is no more than a sentence
     or two and might be cryptic.
-    Borrow Experience. You can use a bonus action to
+
+    **Borrow Experience.** You can use a bonus action to
     bolster yourself with the soul's life experience, making your next attack roll,
     ability check, or saving throw with advantage. If you don't use this benefit
     before the start of your next turn, it is lost.
-    Eyes of the Dead. You can use an
+
+    **Eyes of the Dead.** You can use an
     action to name a place the humanoid saw in life, which creates an invisible
     sensor somewhere in that place if it is on the plane of existence you're
     currently on. The sensor remains for as long as you concentrate, up to 10
     minutes (as if you were concentrating on a spell). You receive visual and
     auditory information from the sensor as if you were in its space using your
     senses.
+
     A creature that can see the sensor (such as one using see invisibility
     or truesight) sees a translucent image of the tormented humanoid whose soul you
     caged.
@@ -1072,8 +1076,8 @@ class SpiritGuardians(Spell):
     3d8 radiant damage (if you are good or neutral) or 3d8 necrotic damage (if you
     are evil). On a successful save, the creature takes half as much damage.
 
-    At
-    Higher Levels: When you cast this spell using a spell slot of 4th level or
+    **At
+    Higher Levels:** When you cast this spell using a spell slot of 4th level or
     higher, the damage increases by 1d8 for each slot level above 3rd.
     """
 
@@ -1095,7 +1099,6 @@ class SpiritualWeapon(Spell):
     When you cast the spell, you can make a
     melee spell attack against a creature within 5 feet of the weapon. On a hit, the
     target takes force damage equal to 1d8 + your spellcasting ability modifier.
-
 
     As a bonus action on your turn, you can move the weapon up to 20 feet and repeat
     the attack against a creature within 5 feet of it.
@@ -1245,29 +1248,35 @@ class StormOfVengeance(Spell):
     round you maintain concentration on this spell, the storm produces additional
     effects on your turn.
 
-    Round 2
-    Acidic rain falls from the cloud. Each creature
-    and object under the cloud takes 1d6 acid damage.
+    =========    ===============================================================
+        Storm of Vengeance after Round 1
+    ----------------------------------------------------------------------------
+    Round        Effect
+    =========    ===============================================================
+    2            Acidic rain falls from the cloud. Each creature
+                 and object under the cloud takes 1d6 acid damage.
 
-    Round 3You call six bolts of
-    lightning from the cloud to strike six creatures or objects of your choice
-    beneath the cloud. A given creature or object can't be struck by more than one
-    bolt. A struck creature must make a Dexterity saving throw. The creature takes
-    10d6 lightning damage on a failed save, or half as much damage on a successful
-    one.
+    3            You call six bolts of  lightning from the cloud to strike six
+                 creatures or objects of your choice beneath the cloud. A
+                 given creature or object can't be struck by more than one
+                 bolt. A struck creature must make a Dexterity saving throw.
+                 The creature takes 10d6 lightning damage on a failed save,
+                 or half as much damage on a successful one.
 
-    Round 4
-    Hailstones rain down from the cloud. Each creature under the cloud
-    takes 2d6 bludgeoning damage.
+    4            Hailstones rain down from the cloud. Each creature under
+                 the cloud takes 2d6 bludgeoning damage.
 
-    Round 5-10
-    Gusts and freezing rain assail the
-    area under the cloud. the area becomes difficult terrain and is heavily
-    obscured. Each creature there takes 1d6 cold damage. Ranged weapon attacks in
-    the area are impossible. The wind and rain count as a severe distraction for the
-    purposes of maintaining concentration on spells. Finally, gusts of strong wind
-    (ranging from 20 to 50 miles per hour) automatically disperse fog, mists, and
-    similar phenomena in the area whether mundane or magical.
+    5-10         Gusts and freezing rain assail the area under the cloud.
+                 The area becomes difficult terrain and is heavily
+                 obscured. Each creature there takes 1d6 cold damage.
+                 Ranged weapon attacks in the area are impossible. The
+                 wind and rain count as a severe distraction for the
+                 purposes of maintaining concentration on spells. Finally,
+                 gusts of strong wind (ranging from 20 to 50 miles per
+                 hour) automatically disperse fog, mists, and
+                 similar phenomena in the area whether mundane or magical.
+    =========    ===============================================================
+
     """
 
     name = "Storm Of Vengeance"
@@ -1288,6 +1297,7 @@ class StormSphere(Spell):
     creature in the sphere when it appears or that ends its turn there must succeed
     on a Strength saving throw or take 2d6 bludgeoning damage. The sphere's space
     is difficult terrain.
+
     Until the spell ends, you can use a bonus action on each
     of your turns to cause a bolt of lightning to leap from the center of the sphere
     toward one creature you choose within 60 feet of the center. Make a ranged
@@ -1296,7 +1306,8 @@ class StormSphere(Spell):
     Creatures within 30
     feet of the sphere have disadvantage on Wisdom (Perception) checks made to
     listen.
-    At Higher Levels. When you cast this spell using a spell slot of 5th
+
+    **At Higher Levels.** When you cast this spell using a spell slot of 5th
     level or higher, the damage increases for each of its effects by 1d6 for each
     slot level above 4th.
     """
@@ -1357,11 +1368,13 @@ class SummonGreaterDemon(Spell):
     as a shadow demon or a barlgura. The demon appears in an unoccupied space you
     can see within range, and the demon disappears when it drops to 0 hit points or
     when the spell ends.
+
     Roll initiative for the demon, which has its own turns.
     When you summon it and on each of your turns thereafter, you can issue a verbal
     command to it (requiring no action on your part), telling it what it must do on
     its next turn. If you issue no command, it spends its turn attacking any
     creature within reach that has attacked it.
+
     At the end of each of the demon's
     turns, it makes a Charisma saving throw. The demon has disadvantage on this
     saving throw if you say its true name. On a failed save, the demon continues to
@@ -1370,6 +1383,7 @@ class SummonGreaterDemon(Spell):
     non-demons to the best of its ability. If you stop concentrating on the spell
     before it reaches its full duration, an uncontrolled demon doesn't disappear for
     1d6 rounds if it still has hit points.
+
     As part of casting the spell, you can
     form a circle on the ground with the blood used as a material component. The
     circle is large enough to encompass your space. While the spell lasts, the
@@ -1397,12 +1411,14 @@ class SummonGreaterDemon(Spell):
 class SummonLesserDemons(Spell):
     """You utter foul words, summoning demons from the chaos of the Abyss. Roll on the
     following table to determine what appears.
-    d6 / Demons Summoned
-    1–2 / Two demons
-    of challenge rating 1 or lower
-    3–4 / Four demons of challenge rating 1/2 or
-    lower
-    5–6 / Eight demons of challenge rating 1/4 or lower
+
+    ======      ====================================================
+    d6          Demons Summoned
+    ======      ====================================================
+    1-2         Two demons of challenge rating 1 or lower
+    3-4         Four demons of challenge rating 1/2 or lower
+    5-6         Eight demons of challenge rating 1/4 or lower
+    ======      ====================================================
 
     The DM chooses the
     demons, such as manes or dretches, and you choose the unoccupied spaces you can
@@ -1412,13 +1428,14 @@ class SummonLesserDemons(Spell):
     including you. Roll initiative for the summoned demons as a group, which has its
     own turns. The demons pursue and attack the nearest non-demons to the best of
     their ability.
+
     As part of casting the spell, you can form a circle on the ground
     with the blood used as a material component. The circle is large enough to
     encompass your space. While the spell lasts, the summoned demons can't cross the
     circle or harm it, and they can't target anyone within it. Using the material
     component in this manner consumes it when the spell ends.
 
-    At Higher Levels:
+    **At Higher Levels:**
     When you cast this spell using a spell slot of 6th or 7th level, you summon
     twice as many demons. If you cast it using a spell slot of 8th or 9th level, you
     summon three times as many demons.
@@ -1447,7 +1464,6 @@ class Sunbeam(Spell):
 
     You can create a new line of radiance as your action on any turn until
     the spell ends.
-
 
     For the duration, a mote of brilliant radiance shines in your hand. It sheds
     bright light in a 30-foot radius and dim light for an additional 30 feet.
@@ -1576,49 +1592,50 @@ class Symbol(Spell):
     sphere when the glyph activates is targeted by its effect, as is a creature that
     enters the sphere for the first time on a turn or ends its turn there.
 
-    Death
+    - **Death.**
+      Each target must make a Constitution saving throw, taking 10d10 necrotic damage
+      on a failed save, or half as much damage on a successful save.
 
-    Each target must make a Constitution saving throw, taking 10d10 necrotic damage
-    on a failed save, or half as much damage on a successful save.
+    - **Discord.**
+      Each
+      target must make a Constitution saving throw. On a failed save, a target bickers
+      and argues with other creatures for 1 minute. During this time, it is incapable
+      of meaningful communication and has disadvantage on attack rolls and ability
+      checks.
 
-    Discord
-    Each
-    target must make a Constitution saving throw. On a failed save, a target bickers
-    and argues with other creatures for 1 minute. During this time, it is incapable
-    of meaningful communication and has disadvantage on attack rolls and ability
-    checks.
-    Fear
-    Each target must make a Wisdom saving throw and becomes frightened
-    for 1 minute on a failed save. While frightened, the target drops whatever it is
-    holding and must move at least 20 feet away from the glyph on each of ist
-    turns, if able.
+    - **Fear.**
+      Each target must make a Wisdom saving throw and becomes frightened
+      for 1 minute on a failed save. While frightened, the target drops whatever it is
+      holding and must move at least 20 feet away from the glyph on each of ist
+      turns, if able.
 
-    Hopelessness
-    Each target must make a Charisma saving throw. On
-    a failed save, the target is overwhelmed with despair for 1 minute. During this
-    time, it can't attack or target any creature with harmful abilities, spells, or
-    other magical effects.
+    - **Hopelessness.**
+      Each target must make a Charisma saving throw. On
+      a failed save, the target is overwhelmed with despair for 1 minute. During this
+      time, it can't attack or target any creature with harmful abilities, spells, or
+      other magical effects.
 
-    Insanity
-    Each target must make an Intelligence saving
-    throw. On a failed save, the target is driven insane for 1 minute. An insane
-    creature can't take actions, can't understand what other creatures say, can't
-    read, and speaks only in gibberish. The DM controls its movement, which is
-    erratic.
+    - **Insanity.**
+      Each target must make an Intelligence saving
+      throw. On a failed save, the target is driven insane for 1 minute. An insane
+      creature can't take actions, can't understand what other creatures say, can't
+      read, and speaks only in gibberish. The DM controls its movement, which is
+      erratic.
 
-    Pain
-    Each target must make a Constitution saving throw and becomes
-    incapacitated with excruciating pain for 1 minute on a failed save.
+    - **Pain.**
+      Each target must make a Constitution saving throw and becomes
+      incapacitated with excruciating pain for 1 minute on a failed save.
 
-    Sleep
-    Each
-    target must make a Wisdom saving throw and falls unconscious for 10 minutes on a
-    failed save. A creature awakens if it takes damage or if someone uses an action
-    to shake or slap it awake.
+    - **Sleep.**
+      Each
+      target must make a Wisdom saving throw and falls unconscious for 10 minutes on a
+      failed save. A creature awakens if it takes damage or if someone uses an action
+      to shake or slap it awake.
 
-    Stunning
-    Each target must make a Wisdom saving
-    throw and becomes stunned for 1 minute on a failed save.
+    - **Stunning.**
+      Each target must make a Wisdom saving
+      throw and becomes stunned for 1 minute on a failed save.
+
     """
 
     name = "Symbol"

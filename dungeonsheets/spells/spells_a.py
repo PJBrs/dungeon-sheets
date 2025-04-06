@@ -63,7 +63,7 @@ class AcidArrow(Spell):
     splashes the target with acid for half as much of the initial
     damage and no damage at the end of its next turn.
 
-    At Higher Levels. When you cast this spell using a spell slot of
+    **At Higher Levels:** When you cast this spell using a spell slot of
     3rd level or higher, the damage (both initial and later) increases
     by 1d4 for each slot level above 2nd.
 
@@ -183,24 +183,27 @@ class AlterSelf(Spell):
     While the spell lasts, you can end one option as an action to gain the benefits
     of a different one.
 
-    Aquatic Adaptation. You adapt your body to an aquatic
-    environment, sprouting gills, and growing webbing between your fingers. You can
-    breathe underwater and gain a swimming speed equal to your walking speed.
-    Change
-    Appearance. You transform your appearance. You decide what you look like,
-    including your height, weight, facial features, sound of your voice, hair
-    length, coloration, and distinguishing characteristics, if any. You can make
-    yourself appear as a member of another race, though none of your statistics
-    change. You also don't appear as a creature of a different size than you, and
-    your basic shape stays the same; if you're bipedal, you can't use this spell to
-    become quadrupedal, for instance. At any time for the duration of the spell, you
-    can use your action to change your appearance in this way again.
-    Natural
-    Weapons. You grow claws, fangs, spines, horns, or a different natural weapon of
-    your choice. Your unarmed strikes deal 1d6 bludgeoning, piercing, or slashing
-    damage, as appropriate to the natural weapon you chose, and you are proficient
-    with your unarmed strikes. Finally, the natural weapon is magic and you have a
-    +1 bonus to the attack and damage rolls you make using it.
+    Aquatic Adaptation.
+      You adapt your body to an aquatic
+      environment, sprouting gills, and growing webbing between your fingers. You can
+      breathe underwater and gain a swimming speed equal to your walking speed.
+      Change
+    Appearance.
+      You transform your appearance. You decide what you look like,
+      including your height, weight, facial features, sound of your voice, hair
+      length, coloration, and distinguishing characteristics, if any. You can make
+      yourself appear as a member of another race, though none of your statistics
+      change. You also don't appear as a creature of a different size than you, and
+      your basic shape stays the same; if you're bipedal, you can't use this spell to
+      become quadrupedal, for instance. At any time for the duration of the spell, you
+      can use your action to change your appearance in this way again.
+    Natural Weapons.
+      You grow claws, fangs, spines, horns, or a different natural weapon of
+      your choice. Your unarmed strikes deal 1d6 bludgeoning, piercing, or slashing
+      damage, as appropriate to the natural weapon you chose, and you are proficient
+      with your unarmed strikes. Finally, the natural weapon is magic and you have a
+      +1 bonus to the attack and damage rolls you make using it.
+
     """
 
     name = "Alter Self"
@@ -223,7 +226,7 @@ class AnimalFriendship(Spell):
     on a Wisdom saving throw or be charmed by you for the spell's duration. If you
     or one of your companions harms the target, the spell ends.
 
-    At Higher Levels:
+    **At Higher Levels:**
     When you cast this spell using a spell slot of 2nd level or higher, you can
     affect one additional beast for each slot level above 1st.
     """
@@ -281,7 +284,6 @@ class AnimalShapes(Spell):
     that you can see within range. You transform each target into the form of a
     large or smaller beast with a challenge rating of 4 or lower. On subsequent
     turns, you can use your actions to transform affected creatures into new forms.
-
 
     The transformation lasts for the duration for each target, or until the target
     drops to 0 hit points or dies. You can choose a different form for each target.
@@ -341,6 +343,7 @@ class AnimateDead(Spell):
     spell using a spell slot of 4th level or higher, you animate or reassert control
     over two additional undead creatures for each slot level above 3rd. Each of the
     creatures must come from a different corpse or pile of bones.
+
     """
 
     name = "Animate Dead"
@@ -375,18 +378,18 @@ class AnimateObjects(Spell):
     given an order, the creature continues to follow it until its task
     is complete.
 
-    **Animated Object Statistics:**
 
-    - Tiny -- HP: 20, AC: 18, Attack: +8 to hit, 1d4 + 4 damage, Str:
-      4, Dex: 18
-    - Small -- HP: 25, AC: 16, Attack: +6 to hit, 1d8 + 2 damage, Str:
-      6, Dex: 14
-    - Medium – HP: 40, AC: 13, Attack: +5 to hit, 2d6 + 1 damage, Str:
-      10, Dex: 12
-    - Large – HP: 50, AC: 10, Attack: +6 to hit, 2d10 + 2 damage, Str:
-      14, Dex: 10
-    - Huge – HP: 80, AC: 10, Attack: +8 to hit, 2d12 + 4 damage, Str:
-      18, Dex: 6
+    ========  ====  ====  ====  =====  ==============================
+         Animated Object Statistics
+    -----------------------------------------------------------------
+    Size      HP    AC    Str   Dex    Attack
+    ========  ====  ====  ====  =====  ==============================
+    Tiny      20    18    4     18     +8 to hit, 1d4 + 4 damage
+    Small     25    16    6     14     +6 to hit, 1d8 + 2 damage
+    Medium    40    13    10    12     +5 to hit, 2d6 + 1 damage
+    Large     50    10    14    10     +6 to hit, 2d10 + 2 damage
+    Huge      80    10    18    6      +8 to hit, 2d12 + 4 damage
+    ========  ====  ====  ====  =====  ==============================
 
     An animated object is a construct with AC, hit points, attacks,
     Strength, and Dexterity determine by its size. Its Constitution is
@@ -526,42 +529,40 @@ class Antipathysympathy(Spell):
     either attracts or repels the specified creatures for the duration. Choose
     antipathy or sympathy as the aura's effect.
 
-    Antipathy.
-    The enchantment causes
-    creatures of the kind you designated to feel an intense urge to leave the area
-    and avoid the target. When such a creature can see the target or comes within 60
-    feet of it, the creature must succeed on a Wisdom saving throw or
-    become frightened. The creature remains frightened while it can see the target
-    or is within 60 feet of it. While frightened by the target, the creature must
-    use its movement to move to the nearest safe spot from which it can't see the
-    target. If the creature moves more than 60 feet from the target and can't see
-    it, the creature is no longer frightened, but the creature becomes frightened
-    again if it regains sight of the target or moves within 60 feet of it.
+    - **Antipathy.**
+      The enchantment causes
+      creatures of the kind you designated to feel an intense urge to leave the area
+      and avoid the target. When such a creature can see the target or comes within 60
+      feet of it, the creature must succeed on a Wisdom saving throw or
+      become frightened. The creature remains frightened while it can see the target
+      or is within 60 feet of it. While frightened by the target, the creature must
+      use its movement to move to the nearest safe spot from which it can't see the
+      target. If the creature moves more than 60 feet from the target and can't see
+      it, the creature is no longer frightened, but the creature becomes frightened
+      again if it regains sight of the target or moves within 60 feet of it.
+    - **Sympathy.**
+      The enchantment causes the specified creatures to feel an intense
+      urge to approach the target while within 60 feet of it or able to see it. When
+      such a creature can see the target or comes within 60 feet o fit, the creature
+      must succeed on a Wisdom saving throw or use its movement on each of its turns
+      to enter the area or move within reach of the target. When the creature has done
+      so, it can't willingly move away from the target. If the target damages or
+      otherwise harms an affected creature, the affected creature can make a
+      Wisdom saving throw to end the effect, as described below.
 
+    - **Ending the Effect.**
+      If an affected creature ends its turn while not within 60 feet of the target
+      or able to see it, the creature makes a Wisdom saving throw. On a successful
+      save, the creature is no longer affected by the target and recognizes the
+      feeling of repugnance or attraction as magical. In addition, a creature affected
+      by the spell is allowed another Wisdom saving throw every 24 hours while the
+      spell persists.
+      A creature that successfully saves against this effect is
+      immune to it for 1 minute, after which time it can be affected again.
 
-    Sympathy.
-    The enchantment causes the specified creatures to feel an intense
-    urge to approach the target while within 60 feet of it or able to see it. When
-    such a creature can see the target or comes within 60 feet o fit, the creature
-    must succeed on a Wisdom saving throw or use its movement on each of its turns
-    to enter the area or move within reach of the target. When the creature has done
-    so, it can't willingly move away from the target. If the target damages or
-    otherwise harms an affected creature, the affected creature can make a
-    Wisdom saving throw to end the effect, as described below.
-
-    Ending the Effect.
-
-    If an affected creature ends its turn while not within 60 feet of the target
-    or able to see it, the creature makes a Wisdom saving throw. On a successful
-    save, the creature is no longer affected by the target and recognizes the
-    feeling of repugnance or attraction as magical. In addition, a creature affected
-    by the spell is allowed another Wisdom saving throw every 24 hours while the
-    spell persists.
-    A creature that successfully saves against this effect is
-    immune to it for 1 minute, after which time it can be affected again.
     """
 
-    name = "Antipathysympathy"
+    name = "Antipathy/sympathy"
     level = 8
     casting_time = "1 hour"
     casting_range = "60 feet"
@@ -582,6 +583,7 @@ class ArcaneEye(Spell):
     You mentally receive visual information from the eye, which has
     normal vision and darkvision out to 30 feet. The eye can look in every
     direction.
+
     As an action, you can move the eye up to 30 feet in any direction.
     There is no limit to how far away from you the eye can move, but it can't enter
     another plane of existence. A solid barrier blocks the eye's movement, but the
@@ -669,7 +671,6 @@ class ArmorOfAgathys(Spell):
     **At Higher Levels:** When you cast this spell using a spell slot
     of 2nd level or higher, both the temporary hit points and the cold
     damage increase by 5 for each slot
-
     """
 
     name = "Armor Of Agathys"
@@ -716,7 +717,6 @@ class AstralProjection(Spell):
     The material body you leave behind is unconscious and
     in a state of suspended animation; it doesn't need food or air and doesn't age.
 
-
     Your astral body resembles your mortal form in almost every way, replicating
     your game statistics and possessions. The principal difference is the addition
     of a silvery cord that extends from between your shoulder blades and trails
@@ -735,7 +735,6 @@ class AstralProjection(Spell):
     your physical body, nor do they persist when you return to it. The spell ends
     for you and your companions when you use your action to dismiss it. When the
     spell ends, the affected creature returns to its physical body, and it awakens.
-
 
     The spell might also end early for you or one of your companions. A successful
     dispel magic spell used against an astral or physical body ends the spell for
@@ -781,7 +780,6 @@ class Augury(Spell):
     two or more times before completing your next long rest, there is
     a cumulative 25 percent chance for each casting after the first
     that you get a random reading. The DM makes this roll in secret.
-
     """
 
     name = "Augury"
@@ -805,6 +803,7 @@ class AuraOfLife(Spell):
     creature in the aura (including you) has resistance to necrotic damage, and its
     hit point maximum can't be reduced. In addition, a nonhostile, living creature
     regains 1 hit point when it starts its turn in the arua with 0 hit points.
+
     """
 
     name = "Aura Of Life"

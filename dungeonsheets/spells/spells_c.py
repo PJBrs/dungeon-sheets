@@ -183,6 +183,7 @@ class Ceremony(Spell):
       For the next 7 days, each target gains a +2 bonus to AC while they are within 30
       feet of each other. A creature can benefit from this rite again only if
       widowed.
+
     """
 
     name = "Ceremony"
@@ -234,18 +235,18 @@ class ChaosBolt(Spell):
     of the d8s. The number rolled on that die determines the attacks
     damage type, as shown below.
 
-    == ===========
-    d8 Damage Type
-    == ===========
-    1  Acid
-    2  Cold
-    3  Fire
-    4  Force
-    5  Lightning
-    6  Poison
-    7  Psychic
-    8  Thunder
-    == ===========
+    ====   =============
+    d8     Damage Type
+    ====   =============
+    1      Acid
+    2      Cold
+    3      Fire
+    4      Force
+    5      Lightning
+    6      Poison
+    7      Psychic
+    8      Thunder
+    ====   =============
 
     If you roll the same number on both d8s, the chaotic energy leaps
     from the target to a different creature of your choice within 30
@@ -383,7 +384,7 @@ class CircleOfDeath(Spell):
     A target takes 8d6 necrotic damage on a failed save, or half as much damage on a
     successful one.
 
-    **At Higher Levels:** W hen you cast this spell using a spell slot
+    **At Higher Levels:** When you cast this spell using a spell slot
     of 7th level or higher, the damage increases by 2d6 for each slot level above
     6th.
     """
@@ -462,8 +463,7 @@ class Clone(Spell):
     version of the same creature. It remains inert and endures indefinitely, as long
     as its vessel remains undisturbed.
 
-
-     At any time after the clone matures, if
+    At any time after the clone matures, if
     the original creature dies, its soul transfers to the clone, provided that the
     soul is free and willing to return. The clone is physically identical to the
     original and has the same personality, memories, and abilities, but none of the
@@ -1393,27 +1393,38 @@ class ControlWeather(Spell):
     on the following tables and change its stage by one, up or
     down. When changing the wind, you can change its direction.
 
-    **Precipitation**
-    Stage 1 – Clear,
-    Stage 2 – Light clouds,
-    Stage 3 – Overcast or ground fog,
-    Stage 4 – Rain, hail or snow,
-    Stage 5 – Torrential rain, driving hail or blizzard
+    ===========    ===========================================
+            Precipitation
+    ==========================================================
+    Stage 1        Clear
+    Stage 2        Light clouds
+    Stage 3        Overcast or ground fog
+    Stage 4        Rain, hail or snow
+    Stage 5        Torrential rain, driving hail or blizzard
+    ===========    ===========================================
 
-    **Temperature**
-    Stage 1 – Unbearable heat,
-    Stage 2 – Hot,
-    Stage 3 – Warm,
-    Stage 4 – Cool,
-    Stage 5 – Cold,
-    Stage 6 – Arctic cold
 
-    **Wind**
-    Stage 1 – Calm,
-    Stage 2 – Moderate wind,
-    Stage 3 – Strong wind,
-    Stage 4 – Gale,
-    Stage 5 – Storm
+    ===========    ===========================================
+            Temperature
+    ==========================================================
+    Stage 1        Unbearable heat
+    Stage 2        Hot
+    Stage 3        Warm
+    Stage 4        Cool
+    Stage 5        Cold
+    Stage 6        Arctic cold
+    ===========    ===========================================
+
+
+    ===========    ===========================================
+              Wind
+    ==========================================================
+    Stage 1        Calm
+    Stage 2        Moderate wind
+    Stage 3        Strong wind
+    Stage 4        Gale
+    Stage 5        Storm
+    ===========    ===========================================
 
     """
 
@@ -1704,20 +1715,22 @@ class Creation(Spell):
     duration depends on the object's material. If the object is composed of multiple
     materials, use the shortest duration.
 
-    Material - Duration
-    Vegetable matter - 1 day
-    Stone/crystal - 12 hours
-    Precious metals - 1 hour
-    Gems - 10 minutes
-
-    Adamantine/Mithral - 1 minute
+    ======================    =============
+    Material                  Duration
+    ======================    =============
+    Vegetable matter          1 day
+    Stone/crystal             12 hours
+    Precious metals           1 hour
+    Gems                      10 minutes
+    Adamantine/Mithral        1 minute
+    ======================    =============
 
     Using any material created by this spell as another spell's
     material component causes that spell to fail.
 
     **At Higher Levels:** When you cast this spell using a spell slot of
-     6th level or higher, the cube increases by 5 feet for each slot
-     level above 5th.
+    6th level or higher, the cube increases by 5 feet for each slot
+    level above 5th.
 
     """
 

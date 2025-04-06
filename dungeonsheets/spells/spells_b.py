@@ -7,8 +7,8 @@ class Bane(Spell):
     attack roll or a saving throw before the spell ends, the target must roll a d4
     and subtract the number rolled from the attack roll or saving throw.
 
-    At Higher
-    Levels: When you cast this spell using a spelslot of 2nd level or higher, you
+    **At Higher
+    Levels:** When you cast this spell using a spelslot of 2nd level or higher, you
     can target one aditional creature for each slot level above 1st.
     """
 
@@ -51,7 +51,6 @@ class BanishingSmite(Spell):
 class Banishment(Spell):
     """You attempt to send one creature that you can see within range to another place
     of existence. The target must succeed on a Charisma saving throw or be banished.
-
 
     If the target is native to the plane of existence you're on, you banish the
     target to a harmless demiplane. While there, the target is incapacitated. The
@@ -283,7 +282,7 @@ class BladeBarrier(Spell):
     provides three-quarters cover to creatures behind it, and its space is difficult
     terrain.
 
-     When a creature enters the wall's area for the first time on a turn
+    When a creature enters the wall's area for the first time on a turn
     or starts its turn there, the creature must make a Dexterity saving throw. On a
     failed save, the creature takes 6 d10 slashing damage. On a successful save,
     the creature takes half as much damage.
@@ -324,8 +323,8 @@ class Bless(Spell):
     makes an attack roll or a saving throw before the spell ends, the target can
     roll a d4 and add the number rolled to the attack roll or saving throw.
 
-    At
-    Higher Levels: When you cast this spell using a spell slot of 2nd level or
+    **At
+    Higher Levels:** When you cast this spell using a spell slot of 2nd level or
     higher, you can target one additional creature for each slot level above 1st.
     """
 
@@ -355,8 +354,8 @@ class Blight(Spell):
     If you target a nonmagical plant that isn't a creature, such as a tree or
     shrub, it doesn't make a saving throw; it simply withers and dies.
 
-    At Higher
-    Levels: When you cast this spell using a spell slot of 5th level or higher, the
+    **At Higher
+    Levels:** When you cast this spell using a spell slot of 5th level or higher, the
     damage increases by 1d8 for each slot level above 4th.
     """
 
@@ -523,8 +522,8 @@ class BoomingBlade(Spell):
     spell ends.
     This spell's damage increases when you reach higher levels.
 
-    At
-    Higher Levels: At 5th level, the melee attack deals an extra 1d8 thunder damage
+    **At
+    Higher Levels:** At 5th level, the melee attack deals an extra 1d8 thunder damage
     to the target, and the damage the target takes for moving increases to 2d8. Both
     damage rolls increase by 1d8 at 11th level and 17th level.
     """
@@ -574,8 +573,8 @@ class BurningHands(Spell):
     The fire
     ignites any flammable objects in the area that aren't being worn or carried.
 
-    At
-    Higher Levels: When you cast this spell using a spell slot of 2nd level or
+    **At
+    Higher Levels:** When you cast this spell using a spell slot of 2nd level or
     higher, the damage increases by 1d6 for each slot level above 1st.
     """
 

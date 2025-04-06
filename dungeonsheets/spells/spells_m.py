@@ -288,7 +288,7 @@ class MagicWeapon(Spell):
     """You touch a nonmagical weapon. Until the spell ends, that weapon becomes a magic
     weapon with a +1 bonus to attack rolls and damage rolls.
 
-    At Higher Levels:
+    **At Higher Levels:**
     When you cast this spell using a spell slot of 4th level or higher, the bonus
     increases to +2.
     When you use a spell slot of 6th level or higher, the bonus
@@ -357,7 +357,7 @@ class MassCureWounds(Spell):
     Each target regains hit points equal to 3d8 + your spellcasting ability
     modifier. This spell has no effect on undead or constructs.
 
-    At Higher Levels:
+    **At Higher Levels:**
     When you cast this spell using a spell slot of 6th level or higher, the healing
     increases by 1d8 for each slot level above 5th.
     """
@@ -399,8 +399,8 @@ class MassHealingWord(Spell):
     you can see within range regain hit points equal to 1d4 + your spellcasting
     ability modifier. This spell has no effect on undead or constructs.
 
-    At Higher
-    Levels: When you cast this spell using a spell slot of 4th level or higher, the
+    **At Higher
+    Levels:** When you cast this spell using a spell slot of 4th level or higher, the
     healing increases by 1d4 for each slot level above 3rd.
     """
 
@@ -478,7 +478,7 @@ class MassSuggestion(Spell):
     If you or any of your companions damage a creature
     affected by this spell, the spell ends for that creature.
 
-    At Higher Levels:
+    **At Higher Levels:**
     When you cast this spell using a 7th-level spell slot, the duration is 10 days.
 
     When you use an 8th-level spell slot, the duration is 30 days.
@@ -600,8 +600,8 @@ class MelfsAcidArrow(Spell):
     next turn. On a miss, the arrow splashes the target with acid for half as much
     of the initial damage and no damage at the end of its next turn.
 
-    At Higher
-    Levels: When you cast this spell using a spell slot of 3rd level or higher, the
+    **At Higher
+    Levels:** When you cast this spell using a spell slot of 3rd level or higher, the
     damage (both initial and later) increases by 1d4 for each slot level above 2nd.
     """
 
@@ -628,7 +628,8 @@ class MelfsMinuteMeteors(Spell):
     feet of the point where the meteor explodes must make a Dexterity saving throw.
     A creature takes 2d6 fire damage on a failed save, or half as much damage on a
     successful one.
-    At Higher Levels. When you cast this spell using a spell slot of
+
+    **At Higher Levels.** When you cast this spell using a spell slot of
     4th level or higher, the number of meteors created increases by two for each
     slot level above 3rd.
     """
