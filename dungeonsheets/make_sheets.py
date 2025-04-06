@@ -55,7 +55,6 @@ jinja_env = forms.jinja_environment()
 jinja_env.filters["rst_to_latex"] = latex.rst_to_latex
 jinja_env.filters["rst_to_html"] = epub.rst_to_html
 jinja_env.filters["to_heading_id"] = epub.to_heading_id
-jinja_env.filters["boxed"] = latex.rst_to_boxlatex
 jinja_env.filters["spellsheetparser"] = latex.latex_character_spell_info
 jinja_env.filters["monsterdoc"] = latex.RPGtex_monster_info
 
