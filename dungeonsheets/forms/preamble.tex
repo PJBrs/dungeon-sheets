@@ -139,6 +139,12 @@
     \smallskip\noindent\textbf{#2}\smallskip%
   \fi
 }
+
+% field list environment (for separate configuration of `field lists`)
+\newenvironment{DUfieldlist}%
+  {\quote\description}
+  {\enddescription\endquote}
+
 [% endraw %]
 [% if not use_tex_template %]
 
