@@ -278,18 +278,6 @@ def rst_to_latex(rst, top_heading_level: int=0, format_dice: bool = True, use_dn
     return tex
 
 
-def rst_to_boxlatex(rst):
-    """Adapted rst translation from dungeonsheets latex module, removing
-    dice parsing and indentation."""
-
-    if rst is None:
-        return ""
-    tex_parts = latex_parts(rst)
-    tex = tex_parts["body"]
-    tex = tex.replace('\n\n', ' \\\\\n')
-    return tex
-
-
 def latex_character_spell_info(char):
     """Generates the spellsheet for the latex character template."""
     headinfo = char.spell_casting_info["head"]
