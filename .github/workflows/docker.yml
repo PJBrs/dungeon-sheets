@@ -67,7 +67,7 @@ jobs:
       packages: read
     strategy:
       matrix:
-        build-command: ["", "--fancy --tex-template --feats-by-type --spells-by-level", "--output-format=epub"]
+        build-command: ["", "--fancy --tex-template --feats-by-type --spells-by-level", "--tex-template --feats-by-type", "--fancy --spells-by-level", "--output-format=epub"]
 
     steps:
     - name: Checkout repository
