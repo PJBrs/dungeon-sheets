@@ -74,6 +74,7 @@ class CharacterRenderer:
         use_dnd_decorations: bool = False,
         use_tex_template: bool = False,
         portrait: str = "",
+        symbol: str = "",
         spell_order: bool = False,
         feat_order: bool = False,
         first_page: int = 1,
@@ -87,6 +88,7 @@ class CharacterRenderer:
             use_dnd_decorations=use_dnd_decorations,
             use_tex_template=use_tex_template,
             portrait=portrait,
+            symbol=symbol,
             spell_order=spell_order,
             feat_order=feat_order,
             first_page=first_page,
@@ -455,20 +457,20 @@ def make_character_content(
     if content_format == "html" or use_tex_template:
         # Let Latex deal with images, if using tex template
         portrait_command = ""
+        symbol_command = ""
         if use_tex_template:
             if character.portrait:
                 for image in character.images:
-                    if re.search(r"" + character.portrait, str(image[0])):
+                    if image[0].samefile(character.portrait):
                         character.images.remove(image)
                         break
-                portrait_command = r"{\centering \includegraphics[width=5.75cm,height=7.85cm,keepaspectratio]{" + character.portrait + "} \\\\ \\noindent}"
-            # Move symbol image a bit left, if applicable
+                portrait_command = f"\\centering \\includegraphics[width=5.75cm,height=7.85cm,keepaspectratio]{{{character.portrait}}}\n\n"
             if character.symbol:
                 for image in character.images:
-                    if re.search(r"" + character.symbol, str(image[0])):
+                    if image[0].samefile(character.symbol):
                         character.images.remove(image)
-                        character.images = [(character.symbol, 1, 488, 564, 145, 112)] + character.images
                         break
+                symbol_command = f"\\centering \\includegraphics[width=4.89cm,height=3.89cm,keepaspectratio]{{{character.symbol}}}\n\n"
         content.append(
             create_character_sheet_content(
                 character,
@@ -476,6 +478,7 @@ def make_character_content(
                 use_dnd_decorations=fancy_decorations,
                 use_tex_template=use_tex_template,
                 portrait=portrait_command,
+                symbol=symbol_command,
                 title="Features, Magical Items and Spells",
             )
         )
