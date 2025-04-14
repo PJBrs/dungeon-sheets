@@ -189,6 +189,7 @@ def latex_parts(
     overrides = {
         "input_encoding": input_encoding,
         "doctitle_xform": doctitle,
+        "docinfo_xform": False,
         "initial_header_level": initial_header_level,
         "use_latex_citations": True,
         "legacy_column_widths": False,
