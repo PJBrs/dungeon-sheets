@@ -807,7 +807,13 @@ class Character(Creature):
     @property
     def carrying_weight(self):
         weight = equipment_weight_parser(self.equipment, self.equipment_weight_dict)
-        weight += sum([w.weight for w in self.weapons])
+        weapons_by_type = []
+        for w in self.weapons:
+            weight += w.weight
+            weapons_by_type.append(type(w))
+        for m in self.magic_items:
+            if not type(m) in weapons_by_type:
+                weight += m.weight
         if self.armor:
             weight += self.armor.weight
         if self.shield:
