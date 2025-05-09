@@ -460,7 +460,7 @@ class MantleOfWhispers(Feature):
     using your reaction. You retain this shadow until you use it or you
     finish a long rest. You can use the shadow as an action. When you do so, it
     vanishes, magically transforming into a disguise that appears on you. You
-    now look like the dead person, but healthy and alive.This disguise lasts
+    now look like the dead person, but healthy and alive. This disguise lasts
     for 1 hour or until you end it as a bonus action.
 
     While you're in the disguise, you gain access to all information that the
