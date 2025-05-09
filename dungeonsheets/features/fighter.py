@@ -817,7 +817,7 @@ class EverReadyShot(Feature):
     source = "Fighter (Arcane Archer)"
 
 
-class BanishingArrow(Feature):
+class BanishingArrow(ArcaneShot):
     """You use abjuration magic to try to temporarily banish your target to a
     harmless location in the Feywild. The creature hit by the arrow must also
     succeed on a Charisma saving throw or be banished. While banished in this
@@ -834,7 +834,7 @@ class BanishingArrow(Feature):
     source = "Fighter (Arcane Archer)"
 
 
-class BeguilingArrow(Feature):
+class BeguilingArrow(ArcaneShot):
     """Your enchantment magic causes this arrow to temporarily beguile its
     target. The creature hit by the arrow takes an extra 2d6 psychic damage,
     and choose one of your allies within 30 feet of the target. The target must
@@ -850,7 +850,7 @@ class BeguilingArrow(Feature):
     source = "Fighter (Arcane Archer)"
 
 
-class BurstingArrow(Feature):
+class BurstingArrow(ArcaneShot):
     """You imbue your arrow with force energy drawn from the school of
     evocation. The energy detonates after your attack. Immediately after the
     arrow hits the creature, the target and all other creatures within 10
@@ -863,7 +863,7 @@ class BurstingArrow(Feature):
     source = "Fighter (Arcane Archer)"
 
 
-class EnfeeblingArrow(Feature):
+class EnfeeblingArrow(ArcaneShot):
     """You weave necromantic magic into your arrow. The creature hit by the arrow
     takes an extra 2d6 necrotic damage. The target must also succeed on a
     Constitution saving throw, or the damage dealt by its weapon attacks is
@@ -876,7 +876,7 @@ class EnfeeblingArrow(Feature):
     source = "Fighter (Arcane Archer)"
 
 
-class GraspingArrow(Feature):
+class GraspingArrow(ArcaneShot):
     """When this arrow strikes its target, conjuration magic creates grasping,
     poisonous brams bles, which wrap around the target. The creature hit by the
     arrow takes an extra 2(16 poison damage, its speed is reduced by 10 feet,
@@ -894,7 +894,7 @@ class GraspingArrow(Feature):
     source = "Fighter (Arcane Archer)"
 
 
-class PiercingArrow(Feature):
+class PiercingArrow(ArcaneShot):
     """You use transmutation magic to give your arrow an ethereal quality. When
     you use this option, you don't make an attack roll for the attack. Instead,
     the arrow shoots forward in a line, which is 1 foot wide and 30 feet long,
@@ -911,7 +911,7 @@ class PiercingArrow(Feature):
     source = "Fighter (Arcane Archer)"
 
 
-class SeekingArrow(Feature):
+class SeekingArrow(ArcaneShot):
     """Using divination magic, you grant your arrow the ability to seek out a
     target. When you use this option, you don't make an attack roll for the
     attack. Instead, choose one creature you have seen in the past minute. The
@@ -931,7 +931,7 @@ class SeekingArrow(Feature):
     source = "Fighter (Arcane Archer)"
 
 
-class ShadowArrow(Feature):
+class ShadowArrow(ArcaneShot):
     """You weave illusion magic into your arrow, causing it to occlude your fees
     vision with shadows. The creature hit by the arrow takes an extra 2d6
     psychic damage, and it must succeed on a Wisdom saving throw or be unable
@@ -941,7 +941,7 @@ class ShadowArrow(Feature):
 
     """
 
-    name = "Shadow Arrow"
+    name = "Arcane Shot: Shadow Arrow"
     source = "Fighter (Arcane Archer)"
 
 
