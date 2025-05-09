@@ -94,7 +94,7 @@ class DefensiveDuelist(Feature):
     can use your reaction to add your proficiency bonus to your AC for
     that attack, potentially causing the attack to miss you.
 
-    **Prerequisite:** Dexterity 13 or higher
+    **Prerequisite:** Dexterity 13 or higher.
 
     """
 
@@ -165,7 +165,7 @@ class ElementalAdept(Feature):
     You can select this feat multiple times. Each time you do so, you
     must choose a different damage type.
 
-    **Prerequisite:** The ability to cast at least one spell
+    **Prerequisite:** The ability to cast at least one spell.
 
     """
 
@@ -185,7 +185,7 @@ class Grappler(Feature):
     - Creatures that are one size larger than you don’t automatically
       succeed on checks to escape your grapple.
 
-    **Prerequisite:** Strength 13 or higher
+    **Prerequisite:** Strength 13 or higher.
 
     """
 
@@ -203,7 +203,7 @@ class GreatWeaponMaster(Feature):
     - Before you make a melee attack with a heavy weapon that you are
       proficient with, you can choose to take a -5 penalty to the
       attack roll. If the attack hits, you add +10 to the attack's
-      damage
+      damage.
 
     """
 
@@ -236,7 +236,7 @@ class HeavilyArmored(Feature):
     - Increase your Strength score by 1, to a maximum of 20.
     - You gain proficiency with heavy armor.
 
-    **Prerequisite:** Proficiency with medium armor
+    **Prerequisite:** Proficiency with medium armor.
 
     """
 
@@ -253,7 +253,7 @@ class HeavyArmorMaster(Feature):
       slashing damage that you take from non magical weapons is
       reduced by 3.
 
-    **Prerequisite:** Proficiency with heavy armor
+    **Prerequisite:** Proficiency with heavy armor.
 
     """
 
@@ -272,7 +272,7 @@ class InspiringLeader(Feature):
     A creature can’t gain temporary hit points from this feat again
     until it has finished a short or long rest.
 
-    **Prerequisite:** Charisma 13 or higher
+    **Prerequisite:** Charisma 13 or higher.
 
     """
 
@@ -418,7 +418,7 @@ class MediumArmorMaster(Feature):
     - When you wear medium armor, you can add 3, rather than 2, to
       your AC if you have a Dexterity of 16 or higher.
 
-    **Prerequisite:** Prerequisite: Proficiency with medium armor
+    **Prerequisite:** Prerequisite: Proficiency with medium armor.
 
     """
 
@@ -450,7 +450,7 @@ class ModeratelyArmored(Feature):
       20.
     - You gain proficiency with medium armor and shields.
 
-    **Prerequisite:** Proficiency with light armor
+    **Prerequisite:** Proficiency with light armor.
 
     """
 
@@ -661,7 +661,7 @@ class RitualCaster(Feature):
     material components you expend as you experiment with the spell to
     master it, as well as the fine inks you need to record it.
 
-    Prerequisite: Intelligence or Wisdom 13 or higher
+    Prerequisite: Intelligence or Wisdom 13 or higher.
 
     """
 
@@ -761,7 +761,7 @@ class Skulker(Feature):
     - Dim light doesn’t impose disadvantage on your Wisdom
       (Perception) checks relying on sight.
 
-    Prerequisite: Dexterity 13 or higher
+    Prerequisite: Dexterity 13 or higher.
 
     """
 
@@ -785,7 +785,7 @@ class SpellSniper(Feature):
     bard, sorcerer, or warlock; Wisdom for cleric or druid; or
     Intelligence for wizard.
 
-    Prerequisite: The ability to cast at least one spell
+    Prerequisite: The ability to cast at least one spell.
 
     """
 
@@ -837,7 +837,7 @@ class WarCaster(Feature):
       spell must have a casting time of 1 action and must target only
       that creature.
 
-    **Prerequisite:** The ability to cast at least one spell
+    **Prerequisite:** The ability to cast at least one spell.
 
     """
 
@@ -875,7 +875,7 @@ class BarbedHide(Feature):
       already proficient in it, your proficiency bonus is doubled for
       any check you make with it.
 
-    **Prerequisite:** Tiefling
+    **Prerequisite:** Tiefling.
 
     """
 
@@ -888,7 +888,7 @@ class BountifulLuckUA(Feature):
     for an attack roll, an ability check, or a saving throw, you can use your
     reaction to let the ally reroll the die. The ally must use the new roll.
 
-    **Prerequisite:** Halfling
+    **Prerequisite:** Halfling.
     """
 
     name = "Bountiful Luck (UA)"
@@ -922,7 +922,7 @@ class DragonWings(Feature):
     20 feet if you aren’t wearing heavy armor and aren’t exceeding your carrying
     capacity.
 
-    **Prerequisite:** Dragonborn
+    **Prerequisite:** Dragonborn.
     """
 
     name = "Dragon Wings"
@@ -938,7 +938,7 @@ class EverybodysFriend(Feature):
       you're already proficient in either skill, your proficiency
       bonus is doubled for any check you make with that skill.
 
-    **Prerequisite:** Half-elf
+    **Prerequisite:** Half-elf.
 
     """
 
@@ -965,7 +965,7 @@ class GrudgeBearer(Feature):
       you add double your proficiency bonus to the check, even if
       you’re not normally proficient.
 
-    **Prerequisite:** Dwarf
+    **Prerequisite:** Dwarf.
 
     """
 
@@ -984,7 +984,7 @@ class HumanDetermination(Feature):
       throw, you can do so with advantage. Once you use this ability,
       you can’t use it again until you finish a short or long rest.
 
-    **Prerequisite:** Human
+    **Prerequisite:** Human.
 
     """
 
@@ -997,7 +997,7 @@ class OrcishAggression(Feature):
     your choice that you can see or hear. You must end this move
     closer to the enemy than you started.
 
-    **Prerequisite:** Half-orc
+    **Prerequisite:** Half-orc.
 
     """
 
@@ -1052,7 +1052,7 @@ class BountifulLuck(Feature):
     you use this ability, you can’t use your Lucky racial trait before
     the end of your next turn.
 
-    **Prerequisite:** Halfling
+    **Prerequisite:** Halfling.
 
     """
 
@@ -1074,7 +1074,7 @@ class DragonFear(Feature):
       frightened target takes any damage, it can repeat the saving
       throw, ending the effect on itself on a success.
 
-    **Prerequisite:** Dragonborn
+    **Prerequisite:** Dragonborn.
 
     """
 
@@ -1098,7 +1098,7 @@ class DragonHide(Feature):
       equal to 1d4 + your Strength modifier, instead of the normal
       bludgeoning damage for an unarmed strike.
 
-    **Prerequisite:** Dragonborn
+    **Prerequisite:** Dragonborn.
 
     """
 
@@ -1134,7 +1134,7 @@ class DwarvenFortitude(Feature):
       modifier, and regain a number of hit points equal to the total
       (minimum of 1).
 
-    **Prerequisite:** Dwarf
+    **Prerequisite:** Dwarf.
 
     """
 
@@ -1154,7 +1154,7 @@ class ElvenAccuracy(Feature):
       Intelligence, Wisdom, or Charisma, you can reroll one of the
       dice once.
 
-    **Prerequisite:** Elf or half-elf
+    **Prerequisite:** Elf or half-elf.
 
     """
 
@@ -1175,7 +1175,7 @@ class FadeAway(Feature):
       throw. Once you use this ability, you can’t do so again until
       you finish a short or long rest.
 
-    **Prerequisite:** Gnome
+    **Prerequisite:** Gnome.
 
     """
 
@@ -1221,7 +1221,7 @@ class FlamesOfPhlegethos(Feature):
       feet. While the flames are present, any creature within 5 feet
       of you that hits you with a melee attack takes 1d4 fire damage.
 
-    **Prerequisite:** Tiefling
+    **Prerequisite:** Tiefling.
 
     """
 
@@ -1237,7 +1237,7 @@ class InfernalConstitution(Feature):
     - You have resistance to cold damage and poison damage.
     - You have advantage on saving throws against being poisoned.
 
-    **Prerequisite:** Tiefling
+    **Prerequisite:** Tiefling.
 
     """
 
@@ -1258,7 +1258,7 @@ class OrchishFury(Feature):
     - Immediately after you use your Relentless Endurance trait, you
       can use your reaction to make one weapon attack.
 
-    **Prerequisite:** Half-orc
+    **Prerequisite:** Half-orc.
 
     """
 
@@ -1279,7 +1279,7 @@ class Prodigy(Feature):
       choose must be one that isn’t already benefiting from a feature,
       such as Expertise, that doubles your proficiency bonus.
 
-    **Prerequisite:** Half-elf, half-orc, or human
+    **Prerequisite:** Half-elf, half-orc, or human.
 
     """
 
@@ -1299,7 +1299,7 @@ class SecondChance(Feature):
       initiative at the start of combat or until you finish a short or
       long rest.
 
-    **Prerequisite:** Halfling
+    **Prerequisite:** Halfling.
 
     """
 
@@ -1318,7 +1318,7 @@ class SquatNimbleness(Feature):
     - You have advantage on any Strength (Athletics) or Dexterity
       (Acrobatics) check you make to escape from being grappled.
 
-    **Prerequisite:** Dwarf or a Small race
+    **Prerequisite:** Dwarf or a Small race.
 
     """
 
