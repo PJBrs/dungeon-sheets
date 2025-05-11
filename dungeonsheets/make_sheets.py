@@ -540,7 +540,7 @@ def latex_character_sheet(character, basename, debug=False):
                 break
 
     tex = jinja_env.get_template("character_sheet_template.tex").render(
-        char=character, portrait=portrait_command
+        character=character, portrait=portrait_command
     )
     latex.create_latex_pdf(
         tex,
