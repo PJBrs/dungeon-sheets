@@ -39,7 +39,8 @@ Homepage = "https://github.com/canismarko/dungeon-sheets"
 
 [tool.setuptools.package-data]
 dungeonsheets = [
-  "forms/*pdf",
+  "forms/*.html",
+  "forms/*.pdf",
   "forms/*.tex",
   "forms/*.txt",
   "modules/DND-5e-LaTeX-Template/*",
