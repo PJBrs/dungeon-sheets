@@ -404,6 +404,7 @@ def make_character_content(
     character: Character,
     content_format: str,
     fancy_decorations: bool = False,
+    use_tex_template: bool = False,
     spell_order: bool = False,
     feat_order: bool = False,
 ) -> List[str]:
@@ -415,9 +416,10 @@ def make_character_content(
     is just the portion that would be found inside the
     ``<body></body>`` tag.
 
-    If *content_format* is ``"tex"``, the content returned will not
-    include the character, spell list, or biography sheets, since
-    these are currently processed through fillable PDFs.
+    When using *content_format* is ``"tex"`, the content returned
+    will only include the character, spell list, and biography
+    when *use_tex_template* is ``True''. Otherwise thes are processed
+    through fillable PDFs.
 
     Parameters
     ----------
@@ -441,17 +443,36 @@ def make_character_content(
         create_preamble_content(
             content_suffix=content_format,
             use_dnd_decorations=fancy_decorations,
-            use_tex_template=False,
+            use_tex_template=use_tex_template,
             title="Features, Magical Items and Spells",
         )
     ]
-    # Make the character sheet, and background pages if producing HTML
-    if content_format != "tex":
+    # Make the character sheet, and background pages (if not using the fillable sheets)
+    if content_format == "html" or use_tex_template:
+        # Let Latex deal with images, if using tex template
+        portrait_command = ""
+        if use_tex_template:
+            if character.portrait:
+                for image in character.images:
+                    if re.search(r"" + character.portrait, str(image[0])):
+                        character.images.remove(image)
+                        break
+                portrait_command = r"{\centering \includegraphics[width=5.75cm,height=7.85cm,keepaspectratio]{" + character.portrait + "} \\\\ \\noindent}"
+            # Move symbol image a bit left, if applicable
+            if character.symbol:
+                for image in character.images:
+                    if re.search(r"" + character.symbol, str(image[0])):
+                        character.images.remove(image)
+                        character.images = [(character.symbol, 1, 488, 564, 145, 112)] + character.images
+                        break
         content.append(
             create_character_sheet_content(
                 character,
                 content_suffix=content_format,
                 use_dnd_decorations=fancy_decorations,
+                use_tex_template=use_tex_template,
+                portrait=portrait_command,
+                title="Features, Magical Items and Spells",
             )
         )
     # Create a list of subcasses, features, spells, etc
@@ -605,11 +626,8 @@ def make_character_sheet(
     if character is None:
         character_props = readers.read_sheet_file(char_file)
         character = _char.Character.load(character_props)
-    # Set the fields in the FDF
     basename = char_file.stem
-    char_base = basename + "_char"
-    person_base = basename + "_person"
-    sheets = [char_base + ".pdf"]
+    sheets = []
     # Prepare the tex/html content
     content_suffix = format_suffixes[output_format]
     # Create a list of features and magic items
@@ -617,20 +635,20 @@ def make_character_sheet(
         character=character,
         content_format=content_suffix,
         fancy_decorations=fancy_decorations,
+        use_tex_template=use_tex_template,
         spell_order=spell_order,
         feat_order=feat_order,
     )
     # Typeset combined LaTeX file
     if output_format == "pdf":
         if use_tex_template:
-            latex_character_sheet(
-                character=character,
-                basename=char_base,
-                debug=debug,
-            )
-        # Fillable PDF forms
+            texname = basename
         else:
-            sheets.append(person_base + ".pdf")
+            char_base = f"{basename}_char"
+            person_base = f"{basename}_person"
+            # Combined with additional LaTeX pages with detailed character info
+            texname = f"{basename}_features"
+            sheets.extend([f"{char_base}.pdf", f"{person_base}.pdf"])
             char_pdf = create_character_pdf_template(
                 character=character, basename=char_base, flatten=flatten
             )
@@ -639,25 +657,25 @@ def make_character_sheet(
                 basename=person_base,
                 flatten=flatten,
             )
-        if character.is_spellcaster and not (use_tex_template):
-            # Create spell sheet
-            spell_base = "{:s}_spells".format(basename)
-            created_basenames = create_spells_pdf_template(
-                character=character, basename=spell_base, flatten=flatten
-            )
-            for spell_base in created_basenames:
-                sheets.append(spell_base + ".pdf")
-        # Combined with additional LaTeX pages with detailed character info
-        features_base = "{:s}_features".format(basename)
+            if character.is_spellcaster:
+                # Create spell sheet
+                spell_base = f"{basename}_spells"
+                created_basenames = create_spells_pdf_template(
+                    character=character, basename=spell_base, flatten=flatten
+                )
+                for spell_base in created_basenames:
+                    sheets.append(f"{spell_base}.pdf")
         try:
             if len(content) > 2:
                 latex.create_latex_pdf(
                     tex="".join(content),
-                    basename=features_base,
+                    basename=texname,
                     keep_temp_files=debug,
                     use_dnd_decorations=fancy_decorations,
+                    use_tex_template=use_tex_template,
                 )
-                sheets.append(features_base + ".pdf")
+            if not use_tex_template:  # Merge the pdfs
+                sheets.append(f"{texname}.pdf")
                 final_pdf = f"{basename}.pdf"
                 merge_pdfs(sheets, final_pdf, clean_up=not (debug))
                 for image in character.images:
