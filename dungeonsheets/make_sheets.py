@@ -89,6 +89,7 @@ class CharacterRenderer:
         )
 
 
+create_preamble_content = CharacterRenderer("preamble.{suffix}")
 create_character_sheet_content = CharacterRenderer("character_sheet_template.{suffix}")
 create_subclasses_content = CharacterRenderer("subclasses_template.{suffix}")
 create_features_content = CharacterRenderer("features_template.{suffix}")
@@ -433,7 +434,8 @@ def make_character_content(
     """
     # Preamble, empty for HTML
     content = [
-        jinja_env.get_template(f"preamble.{content_format}").render(
+        create_preamble_content(
+            content_suffix=content_format,
             use_dnd_decorations=fancy_decorations,
             title="Features, Magical Items and Spells",
         )
