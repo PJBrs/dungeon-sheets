@@ -69,7 +69,7 @@ class CharacterRenderer:
 
     def __call__(
         self,
-        character: Character,
+        character: Optional[Character] = None,
         content_suffix: str = "tex",
         use_dnd_decorations: bool = False,
         spell_order: bool = False,
