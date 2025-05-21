@@ -69,11 +69,12 @@ class CharacterRenderer:
 
     def __call__(
         self,
-        character: Character,
+        character: Character = None,
         content_suffix: str = "tex",
         use_dnd_decorations: bool = False,
         spell_order: bool = False,
         feat_order: bool = False,
+        title: str = "",
     ):
         template = jinja_env.get_template(
             self.template_name.format(suffix=content_suffix)
@@ -83,10 +84,12 @@ class CharacterRenderer:
             use_dnd_decorations=use_dnd_decorations,
             spell_order=spell_order,
             feat_order=feat_order,
+            title=title,
             ordinals=ORDINALS,
         )
 
 
+create_preamble_content = CharacterRenderer("preamble.{suffix}")
 create_character_sheet_content = CharacterRenderer("character_sheet_template.{suffix}")
 create_subclasses_content = CharacterRenderer("subclasses_template.{suffix}")
 create_features_content = CharacterRenderer("features_template.{suffix}")
@@ -431,7 +434,8 @@ def make_character_content(
     """
     # Preamble, empty for HTML
     content = [
-        jinja_env.get_template(f"preamble.{content_format}").render(
+        create_preamble_content(
+            content_suffix=content_format,
             use_dnd_decorations=fancy_decorations,
             title="Features, Magical Items and Spells",
         )
