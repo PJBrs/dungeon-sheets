@@ -544,48 +544,6 @@ def make_character_content(
     return content
 
 
-def latex_character_sheet(character, basename, debug=False):
-    """Another adaption. All changes can be easily included as options
-    in the orignal functions, though."""
-
-    # Load portrait image file if present
-    portrait_command = ""
-    if character.portrait:
-        for image in character.images:
-            if re.search(r"" + character.portrait, str(image[0])):
-                character.images.remove(image)
-                break
-        portrait_command = r"{\centering \includegraphics[width=5.75cm,height=7.85cm,keepaspectratio]{" + character.portrait + "} \\\\ \\noindent}"
-
-    # Move symbol image a bit left, if applicable
-    if character.symbol:
-        for image in character.images:
-            if re.search(r"" + character.symbol, str(image[0])):
-                character.images.remove(image)
-                character.images = [(character.symbol, 1, 488, 564, 145, 112)] + character.images
-                break
-
-    # Preamble, empty for HTML
-    tex = create_preamble_content(
-            use_dnd_decorations=True,
-            use_tex_template=True,
-    ) + create_character_sheet_content(
-            character,
-            content_suffix="tex",
-            use_tex_template=True,
-            portrait=portrait_command,
-            title="Features, Magical Items and Spells",
-    )
-
-    latex.create_latex_pdf(
-        tex,
-        basename=basename,
-        keep_temp_files=debug,
-        use_dnd_decorations=True,
-        use_tex_template=True,
-    )
-
-
 def make_character_sheet(
     char_file: Union[str, Path],
     character: Optional[Character] = None,
