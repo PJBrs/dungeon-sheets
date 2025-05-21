@@ -437,6 +437,7 @@ def make_character_content(
         create_preamble_content(
             content_suffix=content_format,
             use_dnd_decorations=fancy_decorations,
+            use_tex_template=False,
             title="Features, Magical Items and Spells",
         )
     ]
@@ -543,9 +544,18 @@ def latex_character_sheet(character, basename, debug=False):
                 character.images = [(character.symbol, 1, 488, 564, 145, 112)] + character.images
                 break
 
-    tex = jinja_env.get_template("character_sheet_template.tex").render(
-        character=character, portrait=portrait_command
+    # Preamble, empty for HTML
+    tex = create_preamble_content(
+            use_dnd_decorations=True,
+            use_tex_template=True,
+    ) + create_character_sheet_content(
+            character,
+            content_suffix="tex",
+            use_tex_template=True,
+            portrait=portrait_command,
+            title="Features, Magical Items and Spells",
     )
+
     latex.create_latex_pdf(
         tex,
         basename=basename,
