@@ -74,6 +74,7 @@ class CharacterRenderer:
         use_dnd_decorations: bool = False,
         spell_order: bool = False,
         feat_order: bool = False,
+        **kwargs,
     ):
         template = jinja_env.get_template(
             self.template_name.format(suffix=content_suffix)
@@ -84,6 +85,7 @@ class CharacterRenderer:
             spell_order=spell_order,
             feat_order=feat_order,
             ordinals=ORDINALS,
+            **kwargs,
         )
 
 
