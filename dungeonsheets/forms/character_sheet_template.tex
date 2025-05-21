@@ -1,12 +1,6 @@
-\documentclass[letterpaper,openany,oneside,twocolumn]{book}
-
-\usepackage{fontspec}
-\usepackage[justified]{dnd}
-\usepackage{ifthen}
-\usepackage{pstricks}
-
-\usepackage{dndtemplate}
-\usepackage{bookmark}
+[% if use_tex_template %]
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -221,11 +215,6 @@
 
 \OrganizationName{[[ character.org_name ]]}
 
-\begin{document}
-\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
-\onecolumn
-
-
 % CHARACTER PAGE
 \pdfbookmark[0]{Character Sheet}{Character Sheet}
 \rendercharactersheet
@@ -241,3 +230,4 @@
 [%- endif -%]
 
 \end{document}
+[% endif %]
