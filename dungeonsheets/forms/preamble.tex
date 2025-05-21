@@ -146,7 +146,9 @@
 
 [%- endraw %]
 \begin{document}
+
 [% if not use_tex_template %]
+[% if first_page is defined %]\setcounter{page}{[[ first_page ]]}[% endif %]
 
 \chapter*{[[ title ]]}
 [% endif %]
