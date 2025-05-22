@@ -2,6 +2,9 @@
 \newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
 \onecolumn
 
+% Set font for labels to Kalam
+\setlist{font=\entryfont, noitemsep}
+
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
@@ -198,7 +201,6 @@
 
 [[ character.features_summary| rst_to_latex ]]}
 
-
 % Appearance
 
 \Age{[[ character.age ]]}
@@ -236,6 +238,9 @@
 \pdfbookmark[0]{Spellcasting Sheet}{Spellcasting Sheet}
 [[ character| spellsheetparser ]]
 [%- endif -%]
+
+% Reset font for labels
+\setlist{font=\bfseries, noitemsep}
 
 \chapter*{[[ title ]]}
 [% endif %]
