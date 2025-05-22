@@ -5,6 +5,9 @@
 % Set font for labels to Kalam
 \setlist{font=\entryfont, noitemsep}
 
+% Temporarily improve bullets
+\setitemize{label=\normalsize\textbf{\textbullet}}
+
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
@@ -241,6 +244,13 @@
 
 % Reset font for labels
 \setlist{font=\bfseries, noitemsep}
+
+% Reset bullets for itemize
+[% if use_dnd_decorations %]
+\setitemize{label=\footnotesize{\textbullet}}
+[% else %]
+\setitemize{label=\normalsize{\textbullet}}
+[% endif %]
 
 \chapter*{[[ title ]]}
 [% endif %]
