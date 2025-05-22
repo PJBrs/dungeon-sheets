@@ -130,6 +130,7 @@ class Character(Creature):
     allies = ""
     faction_name = ""
     # faction_symbol = placeholder not sure how to implement
+    appearance_text = ""
     backstory = ""
     additional_description = ""
     other_feats_traits = ""
