@@ -219,7 +219,9 @@ def equipment_weight_parser(equipment, gear_dict={}):
     weight = 0
     for gear in equipment.split(','):
         gear = gear.lower().strip().strip(".")
-        q, _, item = item_reader.match(gear).groups()
+        match  = item_reader.match(gear)
+        if match:
+            q, _, item = match.groups()
         if q:
             q = int(q)
         else:
@@ -230,4 +232,4 @@ def equipment_weight_parser(equipment, gear_dict={}):
             continue
         weight = weight + q*gear_w[item]
     return weight
-    
+
