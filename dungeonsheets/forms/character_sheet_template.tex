@@ -154,7 +154,7 @@
 [% if character.hp_current %]\CurrentHitPoints{[[ character.hp_current ]]}[% endif %]
 [% if character.hp_temp %]\TemporaryHitPoints{[[ character.hp_temp ]]}[% endif %]
 \MaxHitDice{[[ character.hit_dice.replace(" ","") ]]}
-\CurrentHitDice{[[ character.hit_dice_current.replace(" ", "") ]]}
+\CurrentHitDice{[[ character.hit_dice_current| replace(" ", "") ]]}
 
 \CP{[% if character.cp > 0 %][[ character.cp ]][% endif %]}
 \SP{[% if character.sp > 0 %][[ character.sp ]][% endif %]}
