@@ -7,6 +7,7 @@ from fdfgen import forge_fdf
 from pypdf import PdfWriter, PdfReader
 
 from dungeonsheets.forms import mod_str
+from dungeonsheets.flatten_pdf import CustomPdfWriter
 
 CHECKBOX_ON = "Yes"
 CHECKBOX_OFF = "Off"
@@ -424,7 +425,7 @@ def make_pdf(fields: dict, src_pdf: str, basename: str, flatten: bool = False):
     except FileNotFoundError:
         # pdftk could not run, so alert the user and use pypdf
         warnings.warn(
-            f"Could not run `{PDFTK_CMD}`, using fallback; forcing `--editable`.",
+            f"Could not run `{PDFTK_CMD}`, using fallback.",
             RuntimeWarning,
         )
         _make_pdf_pypdf(fields, src_pdf, basename, flatten=flatten)
@@ -437,7 +438,7 @@ def _make_pdf_pypdf(fields: dict, src_pdf: str, basename: str, flatten: bool = F
 
     """
 
-    writer = PdfWriter()
+    writer = CustomPdfWriter()
     reader = PdfReader(src_pdf)
     form_fields = reader.get_fields()
     writer.append(reader)
@@ -452,6 +453,9 @@ def _make_pdf_pypdf(fields: dict, src_pdf: str, basename: str, flatten: bool = F
                 writer.pages[0], {key: fields[key]},
                 auto_regenerate=False,
             )
+
+    if flatten:
+        writer.flatten(False)
 
     with open(f"{basename}.pdf", "wb") as output_stream:
         writer.write(output_stream)
