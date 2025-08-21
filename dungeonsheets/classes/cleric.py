@@ -206,7 +206,7 @@ class TrickeryDomain(ClericDomain):
     features_by_level = defaultdict(list)
     features_by_level[1] = [features.BlessingOfTheTrickster]
     features_by_level[2] = [features.InvokeDuplicity]
-    features_by_level[6] = [features.CloakOfShadows]
+    features_by_level[6] = [features.CloakOfShadowsCleric]
     features_by_level[8] = [features.DivineStrikeTrickery]
     features_by_level[17] = [features.ImprovedDuplicity]
 
