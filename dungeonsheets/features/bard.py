@@ -406,7 +406,7 @@ class MastersFlourish(Feature):
 
 
 # College of Whispers
-class PsychicBlades(Feature):
+class PsychicBladesBard(Feature):
     """When you join the College of Whispers at 3rd level, you gain the
     ability to make your weapon attacks magically toxic to a
     creature's mind. When you hit a creature with a weapon attack, you
