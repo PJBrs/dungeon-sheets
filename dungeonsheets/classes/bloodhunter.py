@@ -20,7 +20,7 @@ class OrderOfTheGhostslayer(SubClass):
     name = "Order of the Ghostslayer"
     features_by_level = defaultdict(list)
     features_by_level[3] = [features.RiteOfTheDawn, features.CurseSpecialist]
-    features_by_level[7] = [features.EtherealStep]
+    features_by_level[7] = [features.EtherealStepBloodhunter]
     features_by_level[11] = [features.BrandOfSundering]
     features_by_level[15] = [features.BloodCurseOfTheExorcist]
     features_by_level[18] = [features.RiteRevival]
