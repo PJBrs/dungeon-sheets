@@ -293,7 +293,7 @@ class ElementalAdept(Feature):
     source = "Sorcerer (Feats)"
 
 
-class DragonWings(Feature):
+class DragonWingsSorcerer(Feature):
     """At 14th level, you gain the ability to sprout a pair of dragon wings from
     your back, gaining a flying speed equal to your current speed. You can
     create these wings as a bonus action on your turn. They last until you
