@@ -195,7 +195,7 @@ class Monk(CharClass):
     features_by_level[10] = [features.PurityOfBody]
     features_by_level[13] = [features.TongueOfTheSunAndMoon]
     features_by_level[14] = [features.DiamondSoul]
-    features_by_level[15] = [features.TimelessBody]
+    features_by_level[15] = [features.TimelessBodyMonk]
     features_by_level[18] = [features.EmptyBody]
     features_by_level[20] = [features.PerfectSelf]
 
