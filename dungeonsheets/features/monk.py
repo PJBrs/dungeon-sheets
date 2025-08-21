@@ -400,7 +400,7 @@ class ShadowStep(Feature):
     source = "Monk (Way of Shadow)"
 
 
-class CloakOfShadows(Feature):
+class CloakOfShadowsMonk(Feature):
     """By 11th level, you have learned to become one with the
     shadows. When you are in an area of dim light or darkness, you can
     use your action to become invisible. You remain invisible until

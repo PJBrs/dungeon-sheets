@@ -39,7 +39,7 @@ class ShadowWay(SubClass):
     features_by_level = defaultdict(list)
     features_by_level[3] = [features.ShadowArts]
     features_by_level[6] = [features.ShadowStep]
-    features_by_level[11] = [features.CloakOfShadows]
+    features_by_level[11] = [features.CloakOfShadowsMonk]
     features_by_level[17] = [features.Opportunist]
 
 
