@@ -189,7 +189,7 @@ class Druid(CharClass):
     )
     features_by_level = defaultdict(list)
     features_by_level[2] = [features.WildShape]
-    features_by_level[18] = [features.TimelessBody, features.BeastSpells]
+    features_by_level[18] = [features.TimelessBodyDruid, features.BeastSpells]
     features_by_level[20] = [features.Archdruid]
     subclasses_available = (
         LandCircle,
