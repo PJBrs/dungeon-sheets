@@ -115,7 +115,7 @@ class HorizonWalker(SubClass):
     }
     features_by_level = defaultdict(list)
     features_by_level[3] = [features.DetectPortal, features.PlanarWarrior]
-    features_by_level[7] = [features.EtherealStep]
+    features_by_level[7] = [features.EtherealStepRanger]
     features_by_level[11] = [features.DistantStrike]
     features_by_level[15] = [features.SpectralDefense]
 

@@ -570,7 +570,7 @@ class PlanarWarrior(Feature):
             return self._name + " (2d8/f)"
 
 
-class EtherealStep(Feature):
+class EtherealStepRanger(Feature):
     """At 7th level, you learn to step through the Ethereal Plane. As a bonus
     action, you can cast the etherealness spell with this feature, without
     expending a spell slot, but the spell ends at the end of the current

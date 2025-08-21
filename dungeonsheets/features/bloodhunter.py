@@ -548,7 +548,7 @@ class RiteOfTheDawn(Rites):
     source = "Blood Hunter (Order of the Ghostslayer)"
 
 
-class EtherealStep(Feature):
+class EtherealStepBloodhunter(Feature):
     """Upon reaching 7th level, at the start of your turn, if you aren’t
     incapacitated, you can choose to magically step into the veil between the
     planes.
