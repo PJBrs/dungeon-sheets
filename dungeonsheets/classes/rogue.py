@@ -166,7 +166,7 @@ class Soulknife(SubClass):
     """
     name = "Soulknife"
     features_by_level = defaultdict(list)
-    features_by_level[3] = [features.PsionicPower, features.PsychicBlades]
+    features_by_level[3] = [features.PsionicPower, features.PsychicBladesRogue]
     features_by_level[9] = [features.SoulBlades]
     features_by_level[13] = [features.PsychicVeil]
     features_by_level[17] = [features.RendMind]

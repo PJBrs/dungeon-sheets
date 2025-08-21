@@ -97,17 +97,17 @@ class BardTests(TestCase):
     def test_psychic_blades(self):
         for lvl in range(1, 5):
             char = character.Character(classes=["bard"], levels=[lvl])
-            pb = bard.PsychicBlades(owner=char)
+            pb = bard.PsychicBladesBard(owner=char)
             self.assertEqual(pb.name, "Psychic Blades (2d6)")
         for lvl in range(5, 10):
             char = character.Character(classes=["bard"], levels=[lvl])
-            pb = bard.PsychicBlades(owner=char)
+            pb = bard.PsychicBladesBard(owner=char)
             self.assertEqual(pb.name, "Psychic Blades (3d6)")
         for lvl in range(10, 15):
             char = character.Character(classes=["bard"], levels=[lvl])
-            pb = bard.PsychicBlades(owner=char)
+            pb = bard.PsychicBladesBard(owner=char)
             self.assertEqual(pb.name, "Psychic Blades (5d6)")
         for lvl in range(15, 20):
             char = character.Character(classes=["bard"], levels=[lvl])
-            pb = bard.PsychicBlades(owner=char)
+            pb = bard.PsychicBladesBard(owner=char)
             self.assertEqual(pb.name, "Psychic Blades (8d6)")

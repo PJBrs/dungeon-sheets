@@ -674,7 +674,7 @@ class PsionicPower(Feature):
     source = "Rogue (Soulknife)"
 
 
-class PsychicBlades(Feature):
+class PsychicBladesRogue(Feature):
     """You can manifest your psionic power as shimmering blades of psychic
     energy. Whenever you take the Attack action, you can manifest a
     psychic blade from your free hand and make the attack with that
