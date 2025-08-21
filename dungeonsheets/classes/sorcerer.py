@@ -21,7 +21,7 @@ class DraconicBloodline(SubClass):
     features_by_level = defaultdict(list)
     features_by_level[1] = [features.DragonAncestor, features.DraconicResilience]
     features_by_level[6] = [features.ElementalAffinity]
-    features_by_level[14] = [features.DragonWings]
+    features_by_level[14] = [features.DragonWingsSorcerer]
     features_by_level[18] = [features.DraconicPresence]
 
 
