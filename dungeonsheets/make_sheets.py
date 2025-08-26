@@ -674,16 +674,17 @@ def make_character_sheet(
                     use_dnd_decorations=fancy_decorations,
                     use_tex_template=use_tex_template,
                 )
-            if not use_tex_template:  # Merge the pdfs
+            if not use_tex_template:
                 sheets.append(f"{texname}.pdf")
-                final_pdf = f"{basename}.pdf"
-                merge_pdfs(sheets, final_pdf, clean_up=not (debug))
-                for image in character.images:
-                    insert_image_into_pdf(final_pdf, *image)
         except exceptions.LatexNotFoundError:
             log.warning(
                 f"``lualatex`` not available. Skipping features for {character.name}"
             )
+        if not use_tex_template:  # Merge the pdfs
+            final_pdf = f"{basename}.pdf"
+            merge_pdfs(sheets, final_pdf, clean_up=not (debug))
+        for image in character.images:
+            insert_image_into_pdf(f"{basename}.pdf", *image)
     elif output_format == "epub":
         epub.create_epub(
             chapters={character.name: "".join(content)},
