@@ -28,6 +28,7 @@ from dungeonsheets.content import Creature
 from dungeonsheets.content_registry import find_content
 from dungeonsheets.dice import combine_dice
 from dungeonsheets.equipment_reader import equipment_weight_parser
+from dungeonsheets.features import Feature, FeatureSelector
 from dungeonsheets.weapons import Weapon
 
 log = logging.getLogger(__name__)
@@ -645,7 +646,12 @@ class Character(Creature):
                         warning_message=msg,
                     )
                     _features.append(ThisFeature)
-                self.custom_features += tuple(F(owner=self) for F in _features)
+                feature_choices = attrs.get("feature_choices", [])
+                for F in _features:
+                    if issubclass(F, FeatureSelector):
+                        self.custom_features.append(F(owner=self, feature_choices=feature_choices))
+                    elif issubclass(F, Feature):
+                        self.custom_features.append(F(owner=self))
             elif (attr == "spells") or (attr == "spells_prepared"):
                 # Create a list of actual spell objects
                 _spells = []
