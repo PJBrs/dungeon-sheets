@@ -115,9 +115,9 @@ def create_monsters_content(
     )
 
 
-def create_gm_spellbook(spell_list, suffix):
+def create_gm_spellbook(spell_list, suffix, use_dnd_decorations):
     template = jinja_env.get_template(f"gm_spellbook_template.{suffix}")
-    return template.render(spells=spell_list)
+    return template.render(spells=spell_list, use_dnd_decorations=use_dnd_decorations, ordinals=ORDINALS)
 
 
 def create_party_summary_content(
@@ -334,7 +334,11 @@ def make_gm_sheet(
     # Alphabetical order
     spells = sorted(spells, key=lambda x: x.name)
     # Generate the content
-    content.append(create_gm_spellbook(spells, content_suffix))
+    content.append(create_gm_spellbook(
+        spells,
+        content_suffix,
+        use_dnd_decorations=fancy_decorations
+    ))
     # Add the random tables
     tables = [
         find_content(s, valid_classes=[random_tables.RandomTable])
