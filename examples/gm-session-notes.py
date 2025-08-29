@@ -63,7 +63,7 @@ class Pting(monsters.Monster):
 
 # Defining a *monsters* attribute will include their stat blocks in
 # the output
-monsters = ["aboleth", "wolf", "giant eagle", "Vashta Nerada", Pting]
+monsters = ["aboleth", "acolyte", "wolf", "giant eagle", "Vashta Nerada", Pting]
 
 # Arbitrary sections can be added to the GM notes. The
 # ``extra_sections`` attribute should be a sequence of subclasses of
