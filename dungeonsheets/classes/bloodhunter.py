@@ -167,9 +167,3 @@ class BloodHunter(CharClass):
     features_by_level[13] = [features.BrandOfTethering]
     features_by_level[14] = [features.HardenedSoul]
     features_by_level[20] = [features.SanguineMastery]
-    subclasses_available = (
-        OrderOfTheGhostslayer,
-        OrderOfTheProfaneSoul,
-        OrderOfTheMutant,
-        OrderOfTheLycan,
-    )
