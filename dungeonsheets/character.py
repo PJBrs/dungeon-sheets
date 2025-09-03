@@ -495,7 +495,7 @@ class Character(Creature):
         if self.background is not None:
             for item in getattr(self.background, "features", ()):
                 fts["Background Features"].append(item)
-        return [val for key in fts for val in fts[key]]
+        return fts
 
     @property
     def custom_features_text(self):
