@@ -633,6 +633,8 @@ class Character(Creature):
                     )
                     self.magic_items.append(ThisMagicItem(wielder=self))
             elif attr == "weapon_proficiencies":
+                if isinstance(val, str):
+                    val = [val]
                 self.other_weapon_proficiencies = ()
                 if r"[" in str(val):
                     msg = 'Don\'t forget to choose optional proficiencies: "{}".'
@@ -668,6 +670,8 @@ class Character(Creature):
                     )
                     _features.append(ThisFeature)
                 feature_choices = attrs.get("feature_choices", [])
+                if isinstance(feature_choices, str):
+                    feature_choices = [feature_choices]
                 for F in _features:
                     if issubclass(F, FeatureSelector):
                         self.custom_features.append(F(owner=self, feature_choices=feature_choices))
@@ -676,6 +680,8 @@ class Character(Creature):
             elif (attr == "spells") or (attr == "spells_prepared"):
                 # Create a list of actual spell objects
                 _spells = []
+                if isinstance(val, str):
+                    val = [val]
                 for spell_name in val:
                     msg = 'Spell "{}" not defined. Please add it to ``spells.py``'
                     ThisSpell = self._resolve_mechanic(
@@ -694,6 +700,8 @@ class Character(Creature):
             elif attr == "infusions":
                 if hasattr(self, "Artificer"):
                     _infusions = []
+                    if isinstance(val, str):
+                        val = [val]
                     for infusion_name in val:
                         msg = (
                             "Infusion '{}' not defined. Please add it to"
