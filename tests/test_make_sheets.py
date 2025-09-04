@@ -249,9 +249,6 @@ class TexCreatorTestCase(unittest.TestCase):
         tex = make_sheets.create_spellbook_content(character=char, content_suffix="tex")
         self.assertIn(r"\section*{Spells}", tex)
         self.assertIn(r"\section*{Invisibility}", tex)
-
-    def test_create_spellbook_tex(self):
-        char = self.new_character()
         tex = make_sheets.create_spellbook_content(character=char, content_suffix="tex", spell_order=True)
         self.assertIn(r"\section*{Spells}", tex)
         self.assertIn(r"\subsection*{2nd-Level Spells}", tex)
