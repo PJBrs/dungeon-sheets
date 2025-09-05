@@ -12,7 +12,7 @@ from dungeonsheets.character import (
 )
 from dungeonsheets.monsters import Panther
 from dungeonsheets.weapons import Weapon, Shortsword, Battleaxe
-from dungeonsheets.magic_items import MagicItem
+from dungeonsheets.magic_items import MagicItem, RingOfProtection
 from dungeonsheets.armor import Armor, LeatherArmor, Shield
 
 
@@ -320,6 +320,36 @@ class TestCharacter(TestCase):
         char = Character.load({"name": "Dave", "sheet_type": "character"})
         self.assertFalse(hasattr(char, "sheet_type"),
                          "'sheet_type' not stripped from char props")
+
+    def test_bad_input(self):
+        char = Character(
+            classes="Artificer",
+            subclasses="Divine Soul",
+            character_file_location = "/home/user",
+            what_is_this_attr = "I don't even...",
+            levels="5",
+            race="Balrog",
+            features = 'resilient',
+            feature_choices = ('resilientwisdom'),
+            infusions = ('returning weapon'),
+            skill_proficiencies = "intimidation",
+            skill_expertise = ("persuasion"),
+            spells = ('chaos bolt'),
+            spells_prepared = ('magic missile'),
+            weapons = "javelin",
+            magic_items = "ring of protection",
+            weapon_proficiencies = 'greataxe',
+            background = "Pirate",
+        )
+        self.assertIn(r'Resilient (Wisdom)', str(char.features_by_type["Feats"]))
+        self.assertIn("returning weapon", str(char.infusions).lower())
+        self.assertIn("intimidation", char.skill_proficiencies)
+        self.assertIn("persuasion", char.skill_expertise)
+        self.assertIn(spells.ChaosBolt(), char.spells)
+        self.assertIn(spells.MagicMissile(), char.spells_prepared)
+        self.assertIn("Javelin", str(char.weapons))
+        assert RingOfProtection is type(char.magic_items[0])
+        self.assertIn("greataxe", char.proficiencies_by_type["Weapons"].lower())
 
 
 class DruidTestCase(TestCase):
