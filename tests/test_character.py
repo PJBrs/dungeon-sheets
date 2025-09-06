@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
+from tempfile import TemporaryDirectory
 from unittest import TestCase, expectedFailure
+import os
 import warnings
 
-from dungeonsheets import race, monsters, exceptions, spells, infusions
+from dungeonsheets import exceptions, infusions, make_sheets, monsters, race, spells
 from dungeonsheets.character import (
     Character,
     Wizard,
@@ -350,6 +352,27 @@ class TestCharacter(TestCase):
         self.assertIn("Javelin", str(char.weapons))
         assert RingOfProtection is type(char.magic_items[0])
         self.assertIn("greataxe", char.proficiencies_by_type["Weapons"].lower())
+
+    def test_save_file(self):
+        cwdir = os.getcwd()
+        with TemporaryDirectory() as tmpdir:
+            os.chdir(tmpdir)
+            char = Character(
+                classes=["Fighter", "Sorcerer"],
+                subclasses=["Gunslinger", "Divine Soul"],
+                levels=[15, 5],
+                race="Protector Aasimar",
+                features = ("Bullying Shot", "Disarming Shot", "Forceful Shot", "Violent Shot",
+                "Winging Shot", "Twinned Spell", "Empowered Spell", "turn undead"),
+                feature_choices = ("great-weapon fighting",),
+                background = "Pirate",
+                spells = ("Magic Missile", "Sleep", "Fireball"),
+                spells_prepared = ("Mending", "Prestidigitation"),
+                weapons = ["Sling", "Mace", "Unarmed"],
+            )
+            char.save("save.py")
+            make_sheets.make_sheet(sheet_file="save.py")
+        os.chdir(cwdir)
 
 
 class DruidTestCase(TestCase):
