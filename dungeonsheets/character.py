@@ -248,7 +248,7 @@ class Character(Creature):
     def add_class(
         self,
         cls: (classes.CharClass, type, str),
-        level: (int, str),
+        level: int,
         subclass=None,
         feature_choices: Sequence = [],
     ):
@@ -261,8 +261,6 @@ class Character(Creature):
                 raise AttributeError(
                     "class was not recognized from classes.py: {:s}".format(cls)
                 )
-        if isinstance(level, str):
-            level = int(level)
         self.class_list.append(
             cls(level, owner=self, subclass=subclass, feature_choices=feature_choices)
         )
@@ -282,14 +280,24 @@ class Character(Creature):
         """
         if isinstance(classes_list, str):
             classes_list = [classes_list]
-        if (
-            isinstance(levels, int)
-            or isinstance(levels, float)
-            or isinstance(levels, str)
-        ):
+        if isinstance(levels, float):
+            levels = [int(levels)]
+        if isinstance(levels, str):
+            levels = [int(levels.strip() or 1)]
+        if isinstance(levels, int):
             levels = [levels]
         if len(levels) == 0:
+            log.warning(f"levels not set for character {self.name}; assuming level 1")
             levels = [1] * len(classes_list)
+        new_levels = []
+        for lvl in levels:
+            if isinstance(lvl, float):
+                lvl = int(lvl)
+            if isinstance(lvl, str):
+                lvl = int(lvl.strip() or 1)
+            assert lvl >= 1, f"invalid level set for character {self.name}: {lvl}"
+            new_levels.append(lvl)
+        levels = new_levels
         if isinstance(subclasses, str):
             subclasses = [subclasses]
         if len(subclasses) < len(classes_list):
