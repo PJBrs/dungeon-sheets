@@ -133,7 +133,6 @@ class Character(Creature):
     # faction_symbol = placeholder not sure how to implement
     appearance_text = ""
     backstory = ""
-    additional_description = ""
     other_feats_traits = ""
     treasure = ""
     org_name = ""
@@ -723,6 +722,8 @@ class Character(Creature):
                         _infusions.append(ThisInfusion)
                     _infusions.sort(key=lambda infusion: infusion.name)
                     self.infusions = tuple(i() for i in _infusions)
+            elif attr == "additional_description":
+                self.other_feats_traits = val
             elif type(val) not in (type, ModuleType):
                 # Some other generic attribute
                 is_unknown = not hasattr(self, attr) and not attr.startswith("_")
