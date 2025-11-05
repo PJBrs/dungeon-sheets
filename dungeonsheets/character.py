@@ -135,7 +135,6 @@ class Character(Creature):
     backstory = ""
     other_feats_traits = ""
     treasure = ""
-    org_name = ""
 
     def __init__(
         self,
@@ -722,6 +721,8 @@ class Character(Creature):
                         _infusions.append(ThisInfusion)
                     _infusions.sort(key=lambda infusion: infusion.name)
                     self.infusions = tuple(i() for i in _infusions)
+            elif attr == "org_name":
+                self.faction_name = val
             elif attr == "additional_description":
                 self.other_feats_traits = val
             elif type(val) not in (type, ModuleType):
