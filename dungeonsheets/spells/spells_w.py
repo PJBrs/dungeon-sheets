@@ -284,7 +284,7 @@ class WallOfWater(Spell):
     casting_range = "60 feet"
     components = ("V", "S", "M")
     materials = "A drop of water"
-    duration = "Instantaneous"
+    duration = "Concentration, up to 10 minutes"
     ritual = False
     magic_school = "Evocation"
     classes = ("Druid", "Sorcerer", "Wizard")
