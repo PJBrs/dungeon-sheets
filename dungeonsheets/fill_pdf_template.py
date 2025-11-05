@@ -86,6 +86,7 @@ def create_character_pdf_template(character, basename, flatten=False):
         "Survival": mod_str(character.survival.modifier),
         # Hit points
         "HDTotal": character.hit_dice,
+        "HD": character.hit_dice_current,
         "HPMax": str(character.hp_max),
         "HPCurrent": str(character.hp_current)
         if character.hp_current is not None
